@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EatClean", "EatClean\EatClean.csproj", "{CCEDFA92-A6C4-4555-8CCF-FE41EAE6A58E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCEDFA92-A6C4-4555-8CCF-FE41EAE6A58E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCEDFA92-A6C4-4555-8CCF-FE41EAE6A58E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCEDFA92-A6C4-4555-8CCF-FE41EAE6A58E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCEDFA92-A6C4-4555-8CCF-FE41EAE6A58E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CA1DC21B-BE3A-4C27-B0E9-56CC868BADF7}
+	EndGlobalSection
+EndGlobal
