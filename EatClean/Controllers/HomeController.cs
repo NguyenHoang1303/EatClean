@@ -13,7 +13,7 @@ namespace EatClean.Controllers
             return View();
         }
 
-        public ActionResult Repice()
+        public ActionResult Recipe()
         {
             return View();
         }
