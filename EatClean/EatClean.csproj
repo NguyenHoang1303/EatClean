@@ -152,9 +152,6 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\Home\Recipe.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
