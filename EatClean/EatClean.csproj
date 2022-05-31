@@ -1742,8 +1742,6 @@
     <Content Include="Views\Kocina\Recipe.cshtml" />
     <Content Include="Views\Kocina\Articles.cshtml" />
     <Content Include="Views\Shared\LayoutSignInSignUp.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
     <Content Include="pages\.DS_Store" />
     <Content Include="pages\charts\.DS_Store" />
     <Content Include="pages\forms\.DS_Store" />
