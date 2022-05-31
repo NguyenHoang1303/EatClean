@@ -11,7 +11,8 @@
 *.sln.docstates
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-
+Web.config
+Migrations
 # Mono auto generated files
 mono_crash.*
 
