@@ -10,7 +10,7 @@ namespace EatClean.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled =  false;
+            AutomaticMigrationsEnabled = false;
         }
     } 
 }
