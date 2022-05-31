@@ -125,9 +125,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202205310352435_create_table_all.cs" />
-    <Compile Include="Migrations\202205310352435_create_table_all.designer.cs">
-      <DependentUpon>202205310352435_create_table_all.cs</DependentUpon>
+    <Compile Include="Migrations\202205311132140_initdb.cs" />
+    <Compile Include="Migrations\202205311132140_initdb.Designer.cs">
+      <DependentUpon>202205311132140_initdb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1884,12 +1884,14 @@
     <Content Include="Views\Admin\Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202205310352435_create_table_all.resx">
-      <DependentUpon>202205310352435_create_table_all.cs</DependentUpon>
-    </EmbeddedResource>
     <Content Include="Views\Kocina\Login.cshtml" />
     <Content Include="Views\Kocina\Register.cshtml" />
 
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202205311132140_initdb.resx">
+      <DependentUpon>202205311132140_initdb.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
