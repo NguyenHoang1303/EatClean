@@ -113,14 +113,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Data\DataContext.cs" />
+    <Compile Include="Controllers\User\KocinaController.cs" />
     <Compile Include="Entity\Account.cs" />
     <Compile Include="Entity\Article.cs" />
     <Compile Include="Entity\ArticleDetail.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\Role.cs" />
+    <Compile Include="Entity\Tag.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1722,11 +1723,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Content Include="Views\Kocina\Contact.cshtml" />
+    <Content Include="Views\Kocina\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\.DS_Store" />
@@ -1741,8 +1739,8 @@
     <Content Include="images\samples\.DS_Store" />
     <Content Include="js\.DS_Store" />
     <None Include="packages.config" />
-    <Content Include="Views\Home\Repice.cshtml" />
-    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Kocina\Recipe.cshtml" />
+    <Content Include="Views\Kocina\Articles.cshtml" />
     <Content Include="Views\Shared\LayoutSignInSignUp.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
@@ -1891,6 +1889,9 @@
     <EmbeddedResource Include="Migrations\202205310352435_create_table_all.resx">
       <DependentUpon>202205310352435_create_table_all.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="Views\Kocina\Login.cshtml" />
+    <Content Include="Views\Kocina\Register.cshtml" />
+
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
