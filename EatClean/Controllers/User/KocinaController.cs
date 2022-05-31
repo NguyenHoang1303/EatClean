@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace EatClean.Controllers
+namespace EatClean.Controllers.User
 {
-    public class HomeController : Controller
+    public class KocinaController : Controller
     {
+        // GET: Kocina
         public ActionResult Index()
         {
             return View();
@@ -23,7 +24,7 @@ namespace EatClean.Controllers
             return View();
         }
 
-        public ActionResult Search()
+        public ActionResult Articles()
         {
             return View();
         }
