@@ -13,7 +13,7 @@ namespace EatClean.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202205311358445_initdb"; }
+            get { return "202206011448576_initdb"; }
         }
         
         string IMigrationMetadata.Source

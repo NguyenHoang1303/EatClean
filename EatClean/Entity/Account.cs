@@ -14,5 +14,16 @@ namespace EatClean.Entity
         public long CreatedAt { get; set; }
         public long UpdatedAt { get; set; }
         public long DeletedAt { get; set; }
+
+        public Account(UserViewModel userViewModel)
+        {
+            this.UserName = userViewModel.UserName;
+            this.PasswordHash = userViewModel.Password;
+            this.Email = userViewModel.Email;
+        }
+
+        public Account()
+        {
+        }
     }
 }

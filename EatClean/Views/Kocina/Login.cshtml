@@ -27,6 +27,10 @@
             <div class="uk-text-center uk-margin">
                 <p class="uk-margin-remove">Or use your email account:</p>
             </div>
+            @if (TempData["Success"] != null)
+            {
+                <p class="uk-text-center" style="color:forestgreen">@TempData["Success"]</p>
+            }
             <form class="uk-text-center">
                 <div class="uk-width-1-1 uk-margin">
                     <label class="uk-form-label" for="email">Email</label>
