@@ -2,8 +2,11 @@
 # compiled source #
 ###################
 *.com
+*.idea
+*.vs
 *.class
 *.dll
+*.DS_Store
 *.exe
 *.pdb
 *.dll.config
