@@ -56,15 +56,27 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -393,6 +405,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\EatClean - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1748,32 +1761,10 @@
     <Content Include="Views\Kocina\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="images\.DS_Store" />
-    <Content Include="images\auth\.DS_Store" />
-    <Content Include="images\demo\.DS_Store" />
-    <Content Include="images\faces\.DS_Store" />
-    <Content Include="images\file-icons\.DS_Store" />
-    <Content Include="images\file-icons\128\.DS_Store" />
-    <Content Include="images\file-icons\256\.DS_Store" />
-    <Content Include="images\file-icons\512\.DS_Store" />
-    <Content Include="images\file-icons\64\.DS_Store" />
-    <Content Include="images\samples\.DS_Store" />
-    <Content Include="js\.DS_Store" />
     <Content Include="Views\Kocina\Recipe.cshtml" />
     <Content Include="Views\Kocina\Articles.cshtml" />
     <Content Include="Views\Shared\LayoutSignInSignUp.cshtml" />
-    <Content Include="pages\.DS_Store" />
-    <Content Include="pages\charts\.DS_Store" />
-    <Content Include="pages\forms\.DS_Store" />
-    <Content Include="pages\icons\.DS_Store" />
-    <Content Include="pages\samples\.DS_Store" />
-    <Content Include="pages\tables\.DS_Store" />
-    <Content Include="pages\ui-features\.DS_Store" />
-    <Content Include="scss\.DS_Store" />
-    <Content Include="scss\common\.DS_Store" />
-    <Content Include="scss\common\light\.DS_Store" />
     <Content Include="scss\common\light\common.scss" />
-    <Content Include="scss\common\light\components\.DS_Store" />
     <Content Include="scss\common\light\components\loaders\_bar-loader.scss" />
     <Content Include="scss\common\light\components\loaders\_circle-loader.scss" />
     <Content Include="scss\common\light\components\loaders\_colored-balls.scss" />
@@ -1787,7 +1778,6 @@
     <Content Include="scss\common\light\components\loaders\_square-box.scss" />
     <Content Include="scss\common\light\components\loaders\_square-path-loader.scss" />
     <Content Include="scss\common\light\components\loaders\_variables.scss" />
-    <Content Include="scss\common\light\components\plugin-overrides\.DS_Store" />
     <Content Include="scss\common\light\components\plugin-overrides\_ace.scss" />
     <Content Include="scss\common\light\components\plugin-overrides\_avgrund.scss" />
     <Content Include="scss\common\light\components\plugin-overrides\_codemirror.scss" />
@@ -1849,7 +1839,6 @@
     <Content Include="scss\vertical-layout-light\_sidebar.scss" />
     <Content Include="scss\vertical-layout-light\_variables.scss" />
     <Content Include="scss\vertical-layout-light\_vertical-wrapper.scss" />
-    <Content Include="vendors\.DS_Store" />
     <Content Include="vendors\chartist\chartist.min.js.map" />
     <Content Include="vendors\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="vendors\font-awesome\fonts\fontawesome-webfont.ttf" />
