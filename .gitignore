@@ -4,6 +4,7 @@
 *.com
 *.class
 *.dll
+*.DS_Store
 *.exe
 *.pdb
 *.dll.config
