@@ -1,4 +1,4 @@
-﻿
+﻿@model EatClean.Entity.UserViewModel
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/LayoutSignInSignUp.cshtml";
@@ -27,26 +27,35 @@
             <div class="uk-text-center uk-margin">
                 <p class="uk-margin-remove">Or use your email for registration:</p>
             </div>
-            <form class="uk-text-center">
+            @if (ViewBag.Errors != null)
+            {
+                <p class="uk-text-center" style="color:red">@ViewBag.Errors</p>
+            }
+            @using (Html.BeginForm("Register", "Kocina", FormMethod.Post, new { @class = "uk-text-center" }))
+            {
+                @Html.AntiForgeryToken()
                 <div class="uk-width-1-1 uk-margin">
-                    <label class="uk-form-label" for="name">Full name</label>
-                    <input id="name" class="uk-input uk-form-large uk-border-pill uk-text-center" type="text" placeholder="Enter your full name">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "uk-form-label" })
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "uk-input uk-form-large uk-border-pill uk-text-center" } })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @style = "color:red;font-size:15px" })
                 </div>
                 <div class="uk-width-1-1 uk-margin">
-                    <label class="uk-form-label" for="email">Email</label>
-                    <input id="email" class="uk-input uk-form-large uk-border-pill uk-text-center" type="email" placeholder="Enter your email">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "uk-form-label" })
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "uk-input uk-form-large uk-border-pill uk-text-center" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red;font-size:15px" })
                 </div>
                 <div class="uk-width-1-1 uk-margin">
-                    <label class="uk-form-label" for="password">Password</label>
-                    <input id="password" class="uk-input uk-form-large uk-border-pill uk-text-center" type="password" placeholder="Min 8 characters">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "uk-form-label" })
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "uk-input uk-form-large uk-border-pill uk-text-center" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @style = "color:red;font-size:15px" })
                 </div>
                 <div class="uk-width-1-1 uk-text-center">
-                    <button class="uk-button uk-button-primary uk-button-large">Register</button>
+                    <button class="uk-button uk-button-primary uk-button-large" type="submit">Register</button>
                 </div>
                 <div class="uk-width-1-1 uk-margin uk-text-center">
                     <p class="uk-text-small uk-margin-remove">By signing up you agree to our <a class="uk-link-border" href="#">terms</a> of service.</p>
                 </div>
-            </form>
+            }
         </div>
     </div>
     <div class="uk-width-1-2@m uk-padding-large uk-flex uk-flex-middle uk-flex-center uk-light" data-uk-height-viewport>
@@ -67,3 +76,7 @@
         </div>
     </div>
 </div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
