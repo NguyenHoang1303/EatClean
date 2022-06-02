@@ -1,5 +1,6 @@
 ﻿namespace EatClean.Migrations
 {
+    using EatClean.Entity;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -9,15 +10,23 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(EatClean.Data.DataContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
+            Role roleAdmin = new Role()
+            {
+                Name = "Admin",
+                CreatedAt = DateTime.Now.Ticks
+            };
+            Role roleUser = new Role()
+            {
+                Name = "User",
+                CreatedAt = DateTime.Now.Ticks
+            };
+            context.Roles.Add(roleUser);
+            context.Roles.Add(roleAdmin);
         }
     }
 }
