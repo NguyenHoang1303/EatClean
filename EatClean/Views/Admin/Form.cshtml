@@ -4,93 +4,149 @@
 }
 @section styles
     {
-    <link rel="stylesheet" href="~/vendors/select2/select2.min.css">
-    <link rel="stylesheet" href="~/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <link rel="shortcut icon" href="/images/favicon.png" />
+
+    <link rel="stylesheet" href="/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/main.css" />
+    <script src="/Scripts/uikit.js"></script>
 }
 
-
-
-        <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">General Information</h4>
-                        <p class="card-description">
-                            Necessary information
-                        </p>
-                        <form class="forms-sample">
-                            <div class="form-group">
-                                <label for="exampleInputUsername1">Title</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Title">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Description</label>
-                            <textarea  class="form-control" id="exampleInputEmail1"rows="4" cols="50" placeholder="Description" >
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">General Information</h4>
+                <p class="card-description">
+                    Necessary information
+                </p>
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label for="exampleInputUsername1">Title</label>
+                        <input type="text" class="form-control border border-secondary" id="exampleInputUsername1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Description</label>
+                        <textarea class="form-control border border-secondary" id="exampleInputEmail1" rows="4" cols="50">
 
                             </textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">State</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                            </div>
-                        </form>
+                    </div>
+                    <div class="form-group ">
+                        <label for="exampleInputPassword1">Status</label>
+                        <select class="form-control border border-secondary">
+                            <option>Censored</option>
+                            <option>Have not been censored</option>
+                            <option selected>Waiting for moderation</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="uk-width-expand@m">
+                    <div class="uk-article">
+                        <div class="d-flex justify-content-between">
+                            <h3>How to Make It</h3>
+                            <input class="btn btn-primary uk-padding-small" type="button" id="add-step" onclick="addStep()" value="ADD +">
+                        </div>
+
+                        <hr class="uk-margin-medium-top uk-margin-large-bottom">
+
                     </div>
                 </div>
             </div>
-            <div class="col-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Basic form elements</h4>
-                        <p class="card-description">
-                            Basic form elements
-                        </p>
-                        <form class="forms-sample">
-                            <div class="form-group">
-                                <label for="exampleInputName1">Name</label>
-                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+        </div>
+    </div>
+    <div class="col-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="uk-width-expand@m">
+                    <div class="d-flex justify-content-between">
+                        <h3>Ingredients</h3>
+                        <p class="btn btn-primary uk-padding-small" style="margin:0px;"><a class="text-light" href="#ex1" rel="modal:open">Create Ingrendient</a></p>
+                    </div>
+                    <ul class="uk-list uk-list-large uk-list-divider uk-margin-medium-top ingrendients">
+                    </ul>
+                    <div id="ex1" class="modal">
+                        <p>Thanks for clicking. That felt good.</p>
+                        <div class="d-flex justify-content-between">
+                            <a href="#" rel="modal:close">Close</a>
+                            <input class="btn btn-primary uk-padding-small" onclick="addIngrendient()" type="button" value="ADD +">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Name of The Igredient</label>
+                            <input type="text" name="ingrendient-name" class="form-control border border-secondary" id="exampleInputUsername1">
+                        </div>
+                        <div class="form-group d-flex">
+                            <div class="group-item">
+                                <label for="exampleInputUsername1">Volume</label>
+                                <input type="number" name="volume" style="padding:8px;" class="col-6 form-control border border-secondary" id="exampleInputUsername1">
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail3">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword4">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleSelectGender">Gender</label>
-                                <select class="form-control" id="exampleSelectGender">
-                                    <option>Male</option>
-                                    <option>Female</option>
+                            <div class="group-item">
+                                <label for="exampleInputPassword1">Unit</label>
+                                <select name="unit" class="col-12 form-control border border-secondary">
+                                    <option>Pound</option>
+                                    <option>Cup</option>
+                                    <option>Tablespoon </option>
+                                    <option>Dessertspoon </option>
+                                    <option>Teaspoon </option>
+                                    <option> Fluid Ounce </option>
+
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label>File upload</label>
-                                <input type="file" name="img[]" class="file-upload-default">
-                                <div class="input-group col-xs-12">
-                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                    <span class="input-group-append">
-                                        <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputCity1">City</label>
-                                <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleTextarea1">Textarea</label>
-                                <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                            <button class="btn btn-light">Cancel</button>
-                        </form>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h3 class="uk-margin-large-top">Tags</h3>
+                        <div>
+                            <select onchange="addTag(this.value)" name="unit" class="uk-margin-large-top col-12 form-control border border-secondary">
+                                <option>dinner</option>
+                                <option>casserole</option>
+                                <option>party </option>
+                                <option>meat </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="uk-margin-medium-top tags" data-uk-margin>
+                       @* <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">dinner</span></a>
+                        <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">casserole</span></a>
+                        <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">party</span></a>
+                        <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">meat</span></a>
+                    *@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="flex-column">
+                    <div class="p-2 col-lg-12">
+                        <h4 class="card-title">Upload Image</h4>
+                        <button type="button" class="btn btn-primary mr-2">Upload</button>
+                    </div>
+                    <div class="p-2">
+                        <img class="border border-primary" style="margin:5px;padding:5px;height:150px;object-fit:cover;width:200px;" src="https://i.pinimg.com/564x/24/d9/d9/24d9d9ee35f4ea36467a9e6578d399ba.jpg" />
+
                     </div>
                 </div>
             </div>
-           
- 
+        </div>
+    </div>
+
+
     <!-- content-wrapper ends -->
     <!-- partial -->
 </div>
+@section scripts{
+    <script src="~/js/Admin/store.js"></script>
+}
 
