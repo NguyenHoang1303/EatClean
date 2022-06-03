@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/Content/main.css" />
+    <link rel="stylesheet" href="/Content/upload.css" />
     <script src="/Scripts/uikit.js"></script>
 }
 
@@ -97,7 +98,6 @@
                                     <option>Dessertspoon </option>
                                     <option>Teaspoon </option>
                                     <option> Fluid Ounce </option>
-
                                 </select>
                             </div>
                         </div>
@@ -114,11 +114,11 @@
                         </div>
                     </div>
                     <div class="uk-margin-medium-top tags" data-uk-margin>
-                       @* <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">dinner</span></a>
-                        <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">casserole</span></a>
-                        <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">party</span></a>
-                        <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">meat</span></a>
-                    *@
+                        @* <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">dinner</span></a>
+                            <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">casserole</span></a>
+                            <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">party</span></a>
+                            <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">meat</span></a>
+                        *@
                     </div>
 
                 </div>
@@ -131,22 +131,35 @@
                 <div class="flex-column">
                     <div class="p-2 col-lg-12">
                         <h4 class="card-title">Upload Image</h4>
-                        <button type="button" class="btn btn-primary mr-2">Upload</button>
-                    </div>
-                    <div class="p-2">
-                        <img class="border border-primary" style="margin:5px;padding:5px;height:150px;object-fit:cover;width:200px;" src="https://i.pinimg.com/564x/24/d9/d9/24d9d9ee35f4ea36467a9e6578d399ba.jpg" />
+                        @*  button image*@
 
+                        <input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
+                        <button type="button" id="btnThumbnailLink" class="btn btn-primary mr-2"> Upload</button>
+
+  
+                        @*```````````````````````````````*@
+                        <div id="dropbox" class="uk-margin-large-top">
+                            <div class="form_controls">
+                                <div class="upload_button_holder" style="display:flex;flex-wrap:wrap;">
+                        
+                   
+                                </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
+</div>
 
 
-    <!-- content-wrapper ends -->
-    <!-- partial -->
+<!-- content-wrapper ends -->
+<!-- partial -->
 </div>
 @section scripts{
+    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript">
+    </script>
     <script src="~/js/Admin/store.js"></script>
 }
 

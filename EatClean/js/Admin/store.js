@@ -1,4 +1,23 @@
-﻿let arr = [];
+﻿
+function removeIamge() {
+    $(".uk-padding-remove").click(function () {
+        var parent = $(this).parent(".p-2");
+        var delete_token = $(this).prev().attr("data-delete");
+        $.ajax({
+            type: "POST",
+            url: "https://api.cloudinary.com/v1_1/binht2012e/delete_by_token",
+            cache: false,
+            data: { token: delete_token },// serializes the form's elements.
+            success: function (data){
+                console.log(data.result);
+                parent.remove();
+                    
+            }
+        }, parent);
+
+    });
+}
+let arr = [];
 let number_ingrendient = $(".ingrendient-number").length + 1;
 function addStep() {
     number = $(".uk-element").length + 1;
@@ -87,5 +106,30 @@ function addTag(value) {
     })
 
         
+}
+
+$("#btnThumbnailLink").click(
+    function () {
+        myWidget_thumbnail.open();
     }
+);
+var myWidget_thumbnail = cloudinary.createUploadWidget(
+    {
+        cloudName: "binht2012e",
+        uploadPreset: "cndcrp9y",
+    },
+    (error, result) => {
+        if (!error && result && result.event === "success") {
   
+            $(".upload_button_holder").html(function (index, text) {
+                return text + `
+                                    <div class="p-2" style="position: relative;width:200px">
+                                        <img data-delete="${result.info.delete_token}" class="border border-primary" style="margin:5px;padding:5px;height:150px;object-fit:cover;width:200px;" src="${result.info.secure_url}" />
+                                        <input onclick="removeIamge()" class="btn btn-warning uk-padding-remove" style="position:absolute;top:0;left:90%;height:30px;" type="button" value="Remove">
+                                    </div>`;
+            })
+             
+        }
+    }
+);
+
