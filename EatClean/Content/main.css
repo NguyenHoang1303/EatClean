@@ -4702,11 +4702,11 @@ ul.uk-nav-sub {
 }
 
 /* Hover + Focus */
-.uk-pagination > * > :hover,
-.uk-pagination > * > :focus {
-  color: #4a4a4a;
-  text-decoration: none;
-}
+    .uk-pagination > * > :hover,
+    .uk-pagination > * > :focus {
+        color: #eb4a36;
+        text-decoration: none;
+    }
 
 /* Active */
 .uk-pagination > .uk-active > * {
@@ -10655,6 +10655,19 @@ iframe.uk-cover {
 
 .uk-light .uk-pagination > * > *, .uk-section-primary:not(.uk-preserve-color) .uk-pagination > * > *, .uk-section-secondary:not(.uk-preserve-color) .uk-pagination > * > *, .uk-card-primary.uk-card-body .uk-pagination > * > *, .uk-card-primary > :not([class*='uk-card-media']) .uk-pagination > * > *, .uk-card-secondary.uk-card-body .uk-pagination > * > *, .uk-card-secondary > :not([class*='uk-card-media']) .uk-pagination > * > *, .uk-overlay-primary .uk-pagination > * > *, .uk-offcanvas-bar .uk-pagination > * > * {
   color: rgba(255, 255, 255, 0.6);
+}
+
+.uk-pagination > .active > a,
+.uk-pagination > .active > span,
+.uk-pagination > .active > a:hover,
+.uk-pagination > .active > span:hover,
+.uk-pagination > .active > a:focus,
+.uk-pagination > .active > span:focus {
+    z-index: 2;
+    color: #eb4a36;
+    cursor: default;
+    background-color: #428bca;
+    border-color: #428bca;
 }
 
 .uk-light .uk-pagination > * > :hover, .uk-section-primary:not(.uk-preserve-color) .uk-pagination > * > :hover, .uk-section-secondary:not(.uk-preserve-color) .uk-pagination > * > :hover, .uk-card-primary.uk-card-body .uk-pagination > * > :hover, .uk-card-primary > :not([class*='uk-card-media']) .uk-pagination > * > :hover, .uk-card-secondary.uk-card-body .uk-pagination > * > :hover, .uk-card-secondary > :not([class*='uk-card-media']) .uk-pagination > * > :hover, .uk-overlay-primary .uk-pagination > * > :hover, .uk-offcanvas-bar .uk-pagination > * > :hover,
