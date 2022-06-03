@@ -1,0 +1,53 @@
+﻿@model EatClean.Entity.Account
+@{
+    ViewBag.Title = "UserDetail";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+<div class="d-md-flex">
+    <div class="d-flex flex-column flex-shrink-0 p-3" style="background-color: #eb4a36; border-radius: 20px">
+        <a href="/Kocina/UserDetail" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg class="" width="16" height="32"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-4">Welcome, @Html.DisplayFor(model => model.UserName)</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white" aria-current="page">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                    User Details
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                    Create Article
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <a href="/Kocina/Logout" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+            Logout
+        </a>
+    </div>
+    <div class="ms-5 mt-md-1 mt-4 d-md-flex">
+        <div class="text-center">
+            <img src="https://asota.umobile.edu/wp-content/uploads/2021/08/Person-icon.jpeg" width="200px" height="200px" style="border-radius: 100%" />
+            <h3> @Html.DisplayFor(model => model.UserName)</h3>
+        </div>
+        <div class="ms-md-5">
+            <p><strong>Full Name:</strong></p>
+            <p><strong>Address:</strong></p>
+            <p><strong>Phone Number:</strong></p>
+        </div>
+    </div>
+</div>
+}
