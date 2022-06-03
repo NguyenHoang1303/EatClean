@@ -10666,8 +10666,6 @@ iframe.uk-cover {
     z-index: 2;
     color: #eb4a36;
     cursor: default;
-    background-color: #428bca;
-    border-color: #428bca;
 }
 
 .uk-light .uk-pagination > * > :hover, .uk-section-primary:not(.uk-preserve-color) .uk-pagination > * > :hover, .uk-section-secondary:not(.uk-preserve-color) .uk-pagination > * > :hover, .uk-card-primary.uk-card-body .uk-pagination > * > :hover, .uk-card-primary > :not([class*='uk-card-media']) .uk-pagination > * > :hover, .uk-card-secondary.uk-card-body .uk-pagination > * > :hover, .uk-card-secondary > :not([class*='uk-card-media']) .uk-pagination > * > :hover, .uk-overlay-primary .uk-pagination > * > :hover, .uk-offcanvas-bar .uk-pagination > * > :hover,
