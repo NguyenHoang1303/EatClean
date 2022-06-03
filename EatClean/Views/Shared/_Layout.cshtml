@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/Content/main.css" />
+    <link href="~/Content/bootstrap1.css" rel="stylesheet">
     <script src="~/Scripts/uikit.js"></script>
 </head>
 
@@ -35,12 +36,24 @@
                             </form>
                         </div>
                     </div>
-                    <ul class="uk-navbar-nav uk-visible@m">
-                        <li><a href="/Kocina/Login">Login</a></li>
-                    </ul>
-                    <div class="uk-navbar-item">
-                        <div><a class="uk-button uk-button-primary" href="/Kocina/Register">Register</a></div>
-                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                            <ul class="uk-navbar-nav uk-visible@m">
+                                <li><a href="/Kocina/UserDetail">Welcome, @User.Identity.Name</a></li>
+                            </ul>
+                            <div class="uk-navbar-item">
+                                <div><a class="uk-button uk-button-primary" href="/Kocina/Logout">Logout</a></div>
+                            </div>
+                    }
+                    @if(!User.Identity.IsAuthenticated)
+                    {
+                            <ul class="uk-navbar-nav uk-visible@m">
+                                <li><a href="/Kocina/Login">Login</a></li>
+                            </ul>
+                            <div class="uk-navbar-item">
+                                <div><a class="uk-button uk-button-primary" href="/Kocina/Register">Register</a></div>
+                            </div>
+                    }
                     <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-toggle>
                         <span data-uk-navbar-toggle-icon></span>
                     </a>
