@@ -31,9 +31,11 @@
                     <div>
                         <a class="uk-navbar-toggle" data-uk-search-icon href="#"></a>
                         <div class="uk-drop uk-background-default" data-uk-drop="mode: click; pos: left-center; offset: 0">
-                            <form class="uk-search uk-search-navbar uk-width-1-1">
-                                <input class="uk-search-input uk-text-demi-bold" type="search" placeholder="Search..." autofocus>
-                            </form>
+                            @using (Html.BeginForm("Articles", "Kocina", FormMethod.Get, new { page = ViewBag.CurrentPage, @class = "uk-search uk-search-navbar uk-width-1-1 d-flex" }))
+                            {
+                                <input class="uk-search-input uk-text-demi-bold" name="keyword" style="height: 40px; align-self: center" type="search" placeholder="Enter your keyword..." value="@ViewBag.Search" autofocus>
+                                <input type="submit" class="btn btn-secondary" style="height: 40px; align-self: center" value="Search" />
+                            }
                         </div>
                     </div>
                     @if (User.Identity.IsAuthenticated)

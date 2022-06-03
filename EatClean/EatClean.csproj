@@ -172,6 +172,10 @@
     <Compile Include="Migrations\202206021449007_initDB.Designer.cs">
       <DependentUpon>202206021449007_initDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206031520345_createData.cs" />
+    <Compile Include="Migrations\202206031520345_createData.designer.cs">
+      <DependentUpon>202206031520345_createData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1941,6 +1945,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202206021449007_initDB.resx">
       <DependentUpon>202206021449007_initDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206031520345_createData.resx">
+      <DependentUpon>202206031520345_createData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
