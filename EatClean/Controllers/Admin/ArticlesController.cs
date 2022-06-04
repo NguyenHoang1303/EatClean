@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EatClean.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,11 @@ namespace EatClean.Controllers.Admin
 {
     public class ArticlesController : Controller
     {
+        protected DataContext _db;
+        public ArticlesController()
+        {
+            _db = new DataContext();
+        }
         // GET: Articles
         public ActionResult Index()
         {
@@ -16,6 +22,7 @@ namespace EatClean.Controllers.Admin
 
         public ActionResult Create()
         {
+            ViewBag.Tags = _db.Tags.ToList();
             return View("~/Views/Admin/Articles/Create.cshtml");
         }
     }

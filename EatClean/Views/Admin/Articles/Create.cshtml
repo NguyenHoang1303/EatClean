@@ -106,10 +106,10 @@
                         <h3 class="uk-margin-large-top">Tags</h3>
                         <div>
                             <select onchange="addTag(this.value)" name="unit" class="uk-margin-large-top col-12 form-control border border-secondary">
-                                <option>dinner</option>
-                                <option>casserole</option>
-                                <option>party </option>
-                                <option>meat </option>
+                                @foreach (var Tag in ViewBag.Tags)
+                                {
+                                    <option>@Tag.Name</option>
+                                }
                             </select>
                         </div>
                     </div>
@@ -152,7 +152,16 @@
             </div>
         </div>
     </div>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body text-center">
+            
+                        <button type="button" onclick="createArticle()" id="btnThumbnailLink" class="btn btn-primary mr-2"> Create</button>
 
+        
+                    </div>
+            </div>
+    </div>
 
     <!-- content-wrapper ends -->
     <!-- partial -->

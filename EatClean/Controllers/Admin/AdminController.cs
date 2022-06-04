@@ -27,8 +27,6 @@ namespace EatClean.Entity
             
             Tag tag = new Tag()
             {
-                Id = 1,
-      
                 Name = tag_name,
                 Status = 1,
                 CreateAt = DateTime.Now.Ticks,

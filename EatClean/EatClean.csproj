@@ -127,7 +127,6 @@
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Extensions.Configuration, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
@@ -353,6 +352,14 @@
     <Compile Include="Migrations\202206041349042_create_table_new.cs" />
     <Compile Include="Migrations\202206041349042_create_table_new.designer.cs">
       <DependentUpon>202206041349042_create_table_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206041634301_update_table_new.cs" />
+    <Compile Include="Migrations\202206041634301_update_table_new.designer.cs">
+      <DependentUpon>202206041634301_update_table_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206041652509_update_table_new_2.cs" />
+    <Compile Include="Migrations\202206041652509_update_table_new_2.designer.cs">
+      <DependentUpon>202206041652509_update_table_new_2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -733,6 +740,8 @@
     <Content Include="partials\_sidebar.html" />
     <Fakes Include="Fakes\Microsoft.AspNet.Identity.Core.fakes" />
     <Fakes Include="Fakes\Faker.Net.4.5.fakes" />
+    <Content Include="bin\EatClean.dll.config" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.2.0.0.0.Fakes.fakesconfig" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -741,8 +750,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="bin\EatClean.dll.config" />
-    <Content Include="bin\Microsoft.AspNet.Identity.Core.2.0.0.0.Fakes.fakesconfig" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\EatClean - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -2098,11 +2105,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Kocina\Contact.cshtml" />
     <Content Include="Views\Kocina\Index.cshtml" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\Admin\Tag\Create.cshtml" />
     <Content Include="Views\Kocina\UserDetail.cshtml" />
     <Content Include="Views\Admin\Articles\Create.cshtml" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Kocina\Recipe.cshtml" />
@@ -2234,7 +2241,6 @@
     <Content Include="vendors\typicons.font\font\typicons.woff" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\Admin\Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Kocina\Login.cshtml" />
@@ -2246,6 +2252,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206041349042_create_table_new.resx">
       <DependentUpon>202206041349042_create_table_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206041634301_update_table_new.resx">
+      <DependentUpon>202206041634301_update_table_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206041652509_update_table_new_2.resx">
+      <DependentUpon>202206041652509_update_table_new_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
@@ -2283,8 +2295,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
-    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
