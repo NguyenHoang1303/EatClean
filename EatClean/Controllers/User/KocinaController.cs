@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using Owin;
 using System.Web.Mvc;
+using Microsoft.VisualStudio.Services.WebApi;
 
 namespace EatClean.Controllers.User
 {
@@ -28,9 +30,14 @@ namespace EatClean.Controllers.User
         }
 
         // GET: Kocina
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View();
+            if (page == null) page = 1;
+            int pageSize = 8;
+            int pageIndex = (page ?? 1);
+            var articles = myIdentityDbContext.Articles.ToList();
+            IPagedList<Article> pagedProduct = articles.ToPagedList(pageIndex, pageSize);
+            return View(pagedProduct);
         }
 
         public ActionResult Recipe()
@@ -43,9 +50,14 @@ namespace EatClean.Controllers.User
             return View();
         }
 
-        public ActionResult Articles()
+        public ActionResult Articles(int? page)
         {
-            return View();
+            if (page == null) page = 1;
+            int pageSize = 8;
+            int pageIndex = (page ?? 1);
+            var articles = myIdentityDbContext.Articles.ToList();
+            IPagedList<Article> pagedProduct = articles.ToPagedList(pageIndex, pageSize);
+            return View(pagedProduct);
         }
 
         public ActionResult Login()
@@ -56,6 +68,16 @@ namespace EatClean.Controllers.User
         public ActionResult Register()
         {
             return View();
+        }
+
+        public ActionResult UserDetail()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = myIdentityDbContext.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+                return View(user);
+            }
+            else return View();
         }
 
         public async Task<bool> AddUserToRoleAsync(string UserId, string RoleName)
@@ -119,6 +141,31 @@ namespace EatClean.Controllers.User
                 ViewBag.Errors = "This User Name Has Already Existed!";
                 return View();
             }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(string UserName, string Password)
+        {
+            var user = await userManager.FindAsync(UserName, Password);
+            if (user == null)
+            {
+                ViewBag.ErrorsLogin = "User Name Or Password Is Invalid!";
+                return View();
+            }
+            else
+            {
+                SignInManager<Account, string> signInManager = new SignInManager<Account, string>(
+                    userManager, Request.GetOwinContext().Authentication);
+                await signInManager.SignInAsync(user, false, false);
+                return Redirect("/Kocina");
+            }
+        }
+
+        public ActionResult Logout()
+        {
+            HttpContext.GetOwinContext().Authentication.SignOut();
+            return Redirect("/Kocina");
         }
     }
 }
