@@ -1,4 +1,27 @@
 ﻿
+let arr = [];
+function createArticle() {
+    var imgArray = [];
+    var stepArray = [];
+    var IngredientArray = [];
+    var title = $("input[name=title]").val();
+    var description = $("textarea[name=description]").val();
+    var status = $("select[name=status]").val();
+    var tag = arr;
+    var steps = document.getElementsByClassName('step');
+    var imgs = document.getElementsByClassName('imgs');
+    var ingredients = document.getElementsByClassName('ig-content');
+    for (let i = 0; i < imgs.length; i++) {
+        imgArray.push(imgs[i].value.trim());
+    }
+    for (let i = 0; i < steps.length; i++) {
+        stepArray.push(steps[i].value.trim());
+    }
+    for (let i = 0; i < ingredients.length; i++) {
+        IngredientArray.push(ingredients[i].value.trim());
+    }
+
+}
 function removeIamge() {
     $(".uk-padding-remove").click(function () {
         var parent = $(this).parent(".p-2");
@@ -17,7 +40,7 @@ function removeIamge() {
 
     });
 }
-let arr = [];
+
 let number_ingrendient = $(".ingrendient-number").length + 1;
 function addStep() {
     number = $(".uk-element").length + 1;
@@ -35,7 +58,7 @@ function addStep() {
                                     <input class="btn btn-warning uk-padding-remove" onclick="remove(`+ number + `)" style="height:30px;" type="button" value="Remove">
                                 </div>
                                 <div class="uk-step-content col-12">
-                                    <textarea class="form-control border border-secondary step" rows="10" cols="50">
+                                    <textarea name="steps" class="form-control border border-secondary step" rows="10" cols="50">
 
                                     </textarea>
                                 </div>
@@ -55,7 +78,8 @@ function addIngrendient() {
         return currentcontent + `
                         <li id="step-ig-`+ number_ingrendient + `" class="ingrendient-number">
                             <div class="d-flex justify-content-between">
-                                <p> `+ volume + ` ` + unit + ` ` + ingrendient_name + `</p>
+                                <p > `+ volume + ` ` + unit + ` ` + ingrendient_name + `</p>
+                                    <input class="ig-content" type="hidden" value="`+ volume + ` ` + unit + ` ` + ingrendient_name + `"/>
                                 <input class="btn btn-warning uk-padding-remove" onclick="removeIngrendient(`+ number_ingrendient + `)" style="height:30px;" type="button" value="Remove">
                             </div>
                         </li>
@@ -79,8 +103,6 @@ function removeTag(item) {
 }
 
 function addTag(value) {
- 
-
     let flag = false;
     arr.forEach(
         function (item) {
@@ -104,7 +126,6 @@ function addTag(value) {
             return true;
         }
     })
-
         
 }
 
@@ -124,6 +145,7 @@ var myWidget_thumbnail = cloudinary.createUploadWidget(
             $(".upload_button_holder").html(function (index, text) {
                 return text + `
                                     <div class="p-2" style="position: relative;width:200px">
+                                        <input type="hidden" value="${result.info.secure_url}" class="imgs"/>
                                         <img data-delete="${result.info.delete_token}" class="border border-primary" style="margin:5px;padding:5px;height:150px;object-fit:cover;width:200px;" src="${result.info.secure_url}" />
                                         <input onclick="removeIamge()" class="btn btn-warning uk-padding-remove" style="position:absolute;top:0;left:90%;height:30px;" type="button" value="Remove">
                                     </div>`;

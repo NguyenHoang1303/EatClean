@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using Bogus;
 using EatClean.Data;
 using EatClean.Entity;
 using Newtonsoft.Json;

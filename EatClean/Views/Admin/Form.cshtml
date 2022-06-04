@@ -27,20 +27,20 @@
                 <form class="forms-sample">
                     <div class="form-group">
                         <label for="exampleInputUsername1">Title</label>
-                        <input type="text" class="form-control border border-secondary" id="exampleInputUsername1">
+                        <input name="title" type="text" class="form-control border border-secondary" id="exampleInputUsername1">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Description</label>
-                        <textarea class="form-control border border-secondary" id="exampleInputEmail1" rows="4" cols="50">
+                        <textarea name="description" class="form-control border border-secondary" id="exampleInputEmail1" rows="4" cols="50">
 
                             </textarea>
                     </div>
                     <div class="form-group ">
                         <label for="exampleInputPassword1">Status</label>
-                        <select class="form-control border border-secondary">
-                            <option>Censored</option>
-                            <option>Have not been censored</option>
-                            <option selected>Waiting for moderation</option>
+                        <select name="status" class="form-control border border-secondary">
+                            <option value="1">Censored</option>
+                            <option value="0">Have not been censored</option>
+                            <option value="2" selected>Waiting for moderation</option>
                         </select>
                     </div>
                 </form>
@@ -105,7 +105,7 @@
                     <div class="d-flex justify-content-between">
                         <h3 class="uk-margin-large-top">Tags</h3>
                         <div>
-                            <select onchange="addTag(this.value)" name="unit" class="uk-margin-large-top col-12 form-control border border-secondary">
+                            <select onchange="addTag(this.value)" name="tag" class="uk-margin-large-top col-12 form-control border border-secondary">
                                 <option>dinner</option>
                                 <option>casserole</option>
                                 <option>party </option>
@@ -136,26 +136,35 @@
                         <input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
                         <button type="button" id="btnThumbnailLink" class="btn btn-primary mr-2"> Upload</button>
 
-  
+
                         @*```````````````````````````````*@
                         <div id="dropbox" class="uk-margin-large-top">
                             <div class="form_controls">
                                 <div class="upload_button_holder" style="display:flex;flex-wrap:wrap;">
-                        
-                   
+
+
                                 </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="flex-column text-center">
+                    <input class="btn btn-primary uk-padding-small" onclick="createArticle()" type="button" value="Craete">
 
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- content-wrapper ends -->
-<!-- partial -->
+    <!-- content-wrapper ends -->
+    <!-- partial -->
 </div>
 @section scripts{
     <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript">
