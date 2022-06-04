@@ -61,22 +61,5 @@ namespace EatClean.Migrations
             // articleDetails.ForEach(a => dataContext.ArticleDetails.AddOrUpdate(a));
             // dataContext.SaveChanges();
         }
-
-        private string seedJson()
-        {
-            var content = new Dictionary<string, List<string>>();
-            var steps = new List<string>();
-            steps.Add(Faker.Lorem.Paragraph());
-            steps.Add(Faker.Lorem.Paragraph());
-            steps.Add(Faker.Lorem.Paragraph());
-            content.Add("steps", steps);
-            var ingredients = new List<string>();
-            ingredients.Add(Faker.Lorem.Paragraph());
-            ingredients.Add(Faker.Lorem.Paragraph());
-            ingredients.Add(Faker.Lorem.Paragraph());
-            content.Add("ingredients", ingredients);
-            var jsonString = JsonConvert.SerializeObject(content);
-            return jsonString;
-        }
     }
 }

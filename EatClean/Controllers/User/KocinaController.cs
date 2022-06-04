@@ -50,15 +50,42 @@ namespace EatClean.Controllers.User
             return View();
         }
 
-        public ActionResult Articles(int? page)
+
+        [HttpGet]
+        public ActionResult Articles(int? page, string keyword, string orderBy)
         {
+            List<Article> articles;
+            ViewBag.Search = keyword;
+            ViewBag.OrderBy = orderBy;
             if (page == null) page = 1;
             int pageSize = 8;
             int pageIndex = (page ?? 1);
-            var articles = myIdentityDbContext.Articles.ToList();
+            if(keyword == null)
+            {
+                articles = myIdentityDbContext.Articles.ToList();
+            }
+            else
+            {
+                articles = myIdentityDbContext.Articles.Where(p => p.Title.Contains(keyword)).Where(p => p.Description.Contains(keyword)).ToList();
+            }
+            if(orderBy != null)
+            {
+                switch (orderBy)
+                {
+                    case "ascending":
+                       articles = articles.OrderBy(p => p.Title).ToList();
+                       break;
+                    case "descending":
+                       articles = articles.OrderByDescending(p => p.Title).ToList();
+                       break;
+                    default:
+                       break;
+                }
+            }
             IPagedList<Article> pagedProduct = articles.ToPagedList(pageIndex, pageSize);
             return View(pagedProduct);
         }
+
 
         public ActionResult Login()
         {
