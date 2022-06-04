@@ -62,6 +62,9 @@
     <Reference Include="Faker.Net.4.5, Version=2.0.154.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Faker.Net.2.0.154\lib\net452\Faker.Net.4.5.dll</HintPath>
     </Reference>
+    <Reference Include="Faker.Net.4.5.2.0.154.0.Fakes">
+      <HintPath>FakesAssemblies\Faker.Net.4.5.2.0.154.0.Fakes.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -1956,6 +1959,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Kocina\Contact.cshtml" />
     <Content Include="Views\Kocina\Index.cshtml" />
+    <Content Include="Views\Admin\StoreTag.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Kocina\Recipe.cshtml" />

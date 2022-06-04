@@ -18,5 +18,9 @@ namespace EatClean.Entity
         {
             return View("Form");
         }
+        public ActionResult StoreTag()
+        {
+            return View("Form");
+        }
     }
 }
