@@ -2101,7 +2101,7 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\Admin\StoreTag.cshtml" />
     <Content Include="Views\Kocina\UserDetail.cshtml" />
-    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Product\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Kocina\Recipe.cshtml" />
@@ -2246,6 +2246,9 @@
     <EmbeddedResource Include="Migrations\202206041349042_create_table_new.resx">
       <DependentUpon>202206041349042_create_table_new.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Admin\Tag\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

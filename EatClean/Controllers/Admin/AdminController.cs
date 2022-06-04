@@ -23,7 +23,7 @@ namespace EatClean.Entity
 
         public ActionResult Create()
         {
-            return View();
+            return View("Product/Create");
         }
         public ActionResult StoreTag()
         {
@@ -48,6 +48,7 @@ namespace EatClean.Entity
             if (!string.IsNullOrEmpty(tag.Name))
             {
                 _db.Tags.Add(tag);
+                _db.SaveChanges();
                 return "True";
             }
             }
