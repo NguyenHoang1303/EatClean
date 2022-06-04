@@ -14,9 +14,9 @@ namespace EatClean.Entity
             return View();
         }
 
-        public ActionResult Store()
+        public ActionResult Create()
         {
-            return View("Form");
+            return View();
         }
     }
 }
