@@ -2,14 +2,16 @@
 using EatClean.Entity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
 using System;
-using PagedList;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using Owin;
 using System.Web.Mvc;
+using Microsoft.VisualStudio.Services.WebApi;
+using PagedList;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace EatClean.Controllers.User
 {
@@ -36,7 +38,7 @@ namespace EatClean.Controllers.User
             int pageSize = 8;
             int pageIndex = (page ?? 1);
             var articles = myIdentityDbContext.Articles.ToList();
-            IPagedList<Article> pagedProduct = articles.ToPagedList(pageIndex, pageSize);
+            PagedList.IPagedList<Article> pagedProduct = articles.ToPagedList(pageIndex, pageSize);
             return View(pagedProduct);
         }
 
@@ -82,7 +84,7 @@ namespace EatClean.Controllers.User
                        break;
                 }
             }
-            IPagedList<Article> pagedProduct = articles.ToPagedList(pageIndex, pageSize);
+            PagedList.IPagedList<Article> pagedProduct = articles.ToPagedList(pageIndex, pageSize);
             return View(pagedProduct);
         }
 
