@@ -16,18 +16,10 @@ namespace EatClean.Entity
             this._db = new DataContext();
         }
         // GET: Admin
-        public ActionResult Index()
-        {
-            return View();
-        }
 
-        public ActionResult Create()
+        public ActionResult CreateTag()
         {
-            return View("Product/Create");
-        }
-        public ActionResult StoreTag()
-        {
-            return View();
+            return View("~/Views/Admin/Tag/Create.cshtml");
         }
         [HttpPost]
         public String CreateTag(string tag_name)

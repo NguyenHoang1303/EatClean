@@ -333,6 +333,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
+    <Compile Include="Controllers\Admin\ArticlesController.cs" />
     <Compile Include="Data\DataContext.cs" />
     <Compile Include="Controllers\User\KocinaController.cs" />
     <Compile Include="Entity\Account.cs" />
@@ -2099,9 +2100,9 @@
     <Content Include="Views\Kocina\Index.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-    <Content Include="Views\Admin\StoreTag.cshtml" />
+    <Content Include="Views\Admin\Tag\Create.cshtml" />
     <Content Include="Views\Kocina\UserDetail.cshtml" />
-    <Content Include="Views\Admin\Product\Create.cshtml" />
+    <Content Include="Views\Admin\Articles\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Kocina\Recipe.cshtml" />
@@ -2247,9 +2248,7 @@
       <DependentUpon>202206041349042_create_table_new.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Admin\Tag\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
