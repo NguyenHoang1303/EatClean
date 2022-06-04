@@ -2,12 +2,34 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+@section styles
+    {
+    <link rel="shortcut icon" href="/images/favicon.png" />
+
+    <link rel="stylesheet" href="/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/main.css" />
+    <link rel="stylesheet" href="/Content/upload.css" />
+    <script src="/Scripts/uikit.js"></script>
+}
 
 <div class="row">
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-
+                <h4 class="card-title">General Information</h4>
+                <p class="card-description">
+                    Necessary information
+                </p>
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label for="exampleInputUsername1">Tag Name</label>
+                        <input name="tag" type="text" class="form-control border border-secondary" id="exampleInputUsername1">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
