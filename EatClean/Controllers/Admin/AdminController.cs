@@ -1,6 +1,7 @@
 ﻿using EatClean.Data;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -29,18 +30,33 @@ namespace EatClean.Entity
             return View();
         }
         [HttpPost]
-        public Boolean CreateTag(string TagName)
+        public String CreateTag(string tag_name)
         {
+            
             Tag tag = new Tag()
             {
-                Name = TagName,
+                Id = 1,
+      
+                Name = tag_name,
+                Status = 1,
+                CreateAt = DateTime.Now.Ticks,
+                UpdatedAt = DateTime.Now.Ticks,
+                DeleteAt = 0,
             };
+            try
+            {
             if (!string.IsNullOrEmpty(tag.Name))
             {
                 _db.Tags.Add(tag);
-                return true;
+                return "True";
             }
-            return false;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+            return "False";
         }
     }
 }
