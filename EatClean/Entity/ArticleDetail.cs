@@ -1,12 +1,11 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace EatClean.Entity
 {
     public class ArticleDetail
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Content { get; set; }
-        public int Status { get; set; }
-        public long CreatedAt { get; set; }
-        public long UpdatedAt { get; set; }
-        public long DeletedAt { get; set; }
     }
 }

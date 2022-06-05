@@ -42,8 +42,15 @@ namespace EatClean.Controllers.User
             return View(pagedProduct);
         }
 
-        public ActionResult Recipe()
+        public ActionResult Recipe(int? id)
         {
+            var article = myIdentityDbContext.Articles.Find(id);
+            if (article == null)
+            {
+                return View("Index");
+            }
+            ViewBag.article = article;
+            ViewBag.content = article.ArticleDetail.Content;
             return View();
         }
 

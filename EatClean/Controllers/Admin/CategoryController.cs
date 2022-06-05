@@ -2,7 +2,6 @@
 using EatClean.Entity;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
@@ -21,58 +20,110 @@ namespace EatClean.Controllers.Admin
         // GET: Category
         public ActionResult Index()
         {
-            var category = dataContext.Categories.ToList();
 
-            return View(category);
+            List<Category> categories = dataContext.Categories.Where(c => c.Status != -1).ToList();
+            ViewBag.categories = categories;
+            return View("~/Views/Admin/Category/Index.cshtml");
         }
+
+        // GET: Category/Create
         public ActionResult Create()
         {
-            return View();
+            List<Category> categories = dataContext.Categories.Where(c => c.Status != -1).ToList();
+            ViewBag.categories = categories;
+            return View("~/Views/Admin/Category/Create.cshtml");
         }
+
+        // POST: Category/Create
         [HttpPost]
-        public ActionResult Create(Category category)
+        public bool Create(string name, string description, int categoryParent)
         {
-            dataContext.Categories.Add(category);
-            dataContext.SaveChanges();
-
-            return View();
+            var category = new Category()
+            {
+                Name = name,
+                Description = description,
+                ParentId = categoryParent,
+                Status = 1,
+                CreatedAt = DateTime.Now.Ticks,
+                UpdatedAt = DateTime.Now.Ticks
+            };
+            if (!category.validation())
+            {
+                return false;
+            }
+            try
+            {
+                // TODO: Add insert logic here
+                dataContext.Categories.Add(category);
+                dataContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public ActionResult Update()
+        // GET: Category/Edit/5
+        public ActionResult Edit(int id)
         {
-            return View();
+            List<Category> categories = dataContext.Categories.Where(c => c.Status != -1).ToList();
+            ViewBag.categories = categories;
+            var result = dataContext.Categories.Find(id);
+            if (result == null)
+            {
+                return RedirectToAction("~/Views/Admin/Category/Index.cshtml");
+            }
+            ViewBag.categoryEdit = result;
+            return View("~/Views/Admin/Category/Create.cshtml");
         }
+
+        // POST: Category/Edit/5
         [HttpPost]
-        public ActionResult Update(Category category)
+        public bool Edit(Category categoryEdit)
         {
-            dataContext.Categories.AddOrUpdate(category);
-            dataContext.SaveChanges();
-            return View();
-        }
-        public ActionResult Delete(int id)
-        {
-            var category = dataContext.Categories.Find(id);
-            if (category == null)
+            var result = dataContext.Categories.Find(categoryEdit.Id);
+            if (result == null)
             {
-                ViewBag.CategoryError = "Danh muc khong ton tai";
-                return View();
+                return false;
             }
+            try
+            {
+                // TODO: Add update logic here
+                result.Name = categoryEdit.Name;
+                result.ParentId = categoryEdit.ParentId;
+                result.Description = categoryEdit.Description;
+                result.UpdatedAt = DateTime.Now.Ticks;
+                dataContext.Categories.AddOrUpdate(result);
+                dataContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
-            ViewBag.Category = "Xoa san pham thanh cong";
-            return View();
-        }
-        public ActionResult Search(int id, string name)
+        // POST: Category/Delete/5
+        [HttpPost]
+        public bool Delete(int ?id)
         {
-            DbSet<Category> category = dataContext.Categories;
-            if(id != 0)
+            var result = dataContext.Categories.Find(id);
+            if (result == null)
             {
-                category = (DbSet<Category>)category.Where(c => c.Id == id);
+                return false;
             }
-            if (name != null) 
-            { 
-                category = (DbSet<Category>)dataContext.Categories.Where(c => c.Name.Contains(name));
-            }          
-            return View(category.ToList());
+            try
+            {
+                result.Status = -1;
+                dataContext.Categories.AddOrUpdate(result);
+                dataContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

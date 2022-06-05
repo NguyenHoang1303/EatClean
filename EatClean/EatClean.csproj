@@ -333,6 +333,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Admin\ArticlesController.cs" />
+    <Compile Include="Controllers\Admin\CategoryController.cs" />
     <Compile Include="Data\DataContext.cs" />
     <Compile Include="Controllers\User\KocinaController.cs" />
     <Compile Include="Entity\Account.cs" />
@@ -361,8 +362,21 @@
     <Compile Include="Migrations\202206041652509_update_table_new_2.designer.cs">
       <DependentUpon>202206041652509_update_table_new_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206050259045_updateCategory.cs" />
+    <Compile Include="Migrations\202206050259045_updateCategory.designer.cs">
+      <DependentUpon>202206050259045_updateCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206050304291_updateCate.cs" />
+    <Compile Include="Migrations\202206050304291_updateCate.designer.cs">
+      <DependentUpon>202206050304291_updateCate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206050958003_updateAr.cs" />
+    <Compile Include="Migrations\202206050958003_updateAr.designer.cs">
+      <DependentUpon>202206050958003_updateAr.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\ArticleRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Antlr3.Runtime.dll" />
@@ -652,6 +666,7 @@
     <Content Include="images\sprites\red.png" />
     <Content Include="images\sprites\yellow.png" />
     <Content Include="js\ace.js" />
+    <Content Include="js\Admin\Category\index.js" />
     <Content Include="js\Admin\store.js" />
     <Content Include="js\Admin\tag.js" />
     <Content Include="js\alerts.js" />
@@ -1168,6 +1183,7 @@
     <Content Include="vendors\ace-builds\src-min\worker-php.js" />
     <Content Include="vendors\ace-builds\src-min\worker-xml.js" />
     <Content Include="vendors\ace-builds\src-min\worker-xquery.js" />
+    <Content Include="vendors\boostrap4\bootstrap.min.css" />
     <Content Include="vendors\bootstrap-datepicker\bootstrap-datepicker.min.css" />
     <Content Include="vendors\bootstrap-datepicker\bootstrap-datepicker.min.js" />
     <Content Include="vendors\bootstrap-maxlength\bootstrap-maxlength.min.js" />
@@ -2110,6 +2126,8 @@
     <Content Include="Views\Admin\Articles\Create.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Admin\Category\Create.cshtml" />
+    <Content Include="Views\Admin\Category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Kocina\Recipe.cshtml" />
@@ -2258,6 +2276,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206041652509_update_table_new_2.resx">
       <DependentUpon>202206041652509_update_table_new_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206050259045_updateCategory.resx">
+      <DependentUpon>202206050259045_updateCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206050304291_updateCate.resx">
+      <DependentUpon>202206050304291_updateCate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206050958003_updateAr.resx">
+      <DependentUpon>202206050958003_updateAr.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -1,27 +1,53 @@
 ﻿
 let arr = [];
-function createArticle() {
+$("#btnCreateAticle").on("click", function () {
+
     var imgArray = [];
     var stepArray = [];
-    var IngredientArray = [];
-    var title = $("input[name=title]").val();
+    var ingredientArray = [];
+    var title = $("#titleArticle").val();
     var description = $("textarea[name=description]").val();
-    var status = $("select[name=status]").val();
-    var tag = arr;
-    var steps = document.getElementsByClassName('step');
-    var imgs = document.getElementsByClassName('imgs');
-    var ingredients = document.getElementsByClassName('ig-content');
-    for (let i = 0; i < imgs.length; i++) {
-        imgArray.push(imgs[i].value.trim());
-    }
-    for (let i = 0; i < steps.length; i++) {
-        stepArray.push(steps[i].value.trim());
-    }
-    for (let i = 0; i < ingredients.length; i++) {
-        IngredientArray.push(ingredients[i].value.trim());
-    }
+    var category = $("select[name=category]").val();
+    var tag = $("select[name=unit]").val();
+    var steps = $(".step-articles");
+    var thumbnail = $('#img-article').val();
+    var ingredients = $('.ig-content');
+    steps.each(function () {
+        stepArray.push($(this).val())
+    })
+    ingredients.each(function () {
+        ingredientArray.push($(this).val());
+    })
 
-}
+    let content = {
+        steps: stepArray,
+        recipe: ingredientArray,
+    }
+    let data = {
+        title: title,
+        description: description,
+        tagId: tag,
+        categoryId: category,
+        contents: JSON.stringify(content),
+        thumbnail: thumbnail
+    }
+    $.ajax({
+        type: "POST",
+        url: "/Articles/Create",
+        data:data,
+        success: function (data) {
+            if (data == "True") {
+                swal("Good job!", "You clicked the button!", "success");
+            } else {
+                swal("Oh noes!", "The AJAX request failed!", "error");
+            }
+        }, error: function () {
+            swal("Oh noes!", "The AJAX request failed!", "error");
+        }
+    });
+
+})
+
 function removeIamge() {
     $(".uk-padding-remove").click(function () {
         var parent = $(this).parent(".p-2");
@@ -31,10 +57,9 @@ function removeIamge() {
             url: "https://api.cloudinary.com/v1_1/binht2012e/delete_by_token",
             cache: false,
             data: { token: delete_token },// serializes the form's elements.
-            success: function (data){
+            success: function (data) {
                 console.log(data.result);
                 parent.remove();
-                    
             }
         }, parent);
 
@@ -42,37 +67,40 @@ function removeIamge() {
 }
 
 let number_ingrendient = $(".ingrendient-number").length + 1;
-function addStep() {
-    number = $(".uk-element").length + 1;
-    console.log(number)
-    $(".uk-article").html(function (index, currentcontent) {
-        return currentcontent + `
-                        <div id="step-`+ number + `" class="uk-grid-small uk-margin-medium-top" data-uk-grid>
+function createStep(number) {
+    return `<div id="step-${number}" class="uk-grid-small uk-margin-medium-top" data-uk-grid>
                             <div class="uk-width-auto">
                                 <a href="#" class="uk-step-icon" data-uk-icon="icon: check; ratio: 0.8"
                                    data-uk-toggle="target: #step-1; cls: uk-step-active"></a>
                             </div>
                             <div class="uk-width-expand">
                                 <div class="d-flex justify-content-between">
-                                    <h5 class="uk-step-title uk-text-500 uk-text-uppercase uk-text-primary" data-uk-leader="fill:—"> <div class="uk-element">`+ number + `. Step</div></h5>
-                                    <input class="btn btn-warning uk-padding-remove" onclick="remove(`+ number + `)" style="height:30px;" type="button" value="Remove">
+                                    <h5 class="uk-step-title uk-text-500 uk-text-uppercase uk-text-primary" data-uk-leader="fill:—"> <div class="uk-element">${number}. Step</div></h5>
+                                    <input class="btn btn-warning uk-padding-remove" style="height:30px;" onclick="remove(${number})" type="button" value="Remove">
                                 </div>
                                 <div class="uk-step-content col-12">
-                                    <textarea name="steps" class="form-control border border-secondary step" rows="10" cols="50">
-
-                                    </textarea>
+                                    <textarea name="steps" class="form-control border border-secondary step-articles" rows="10" cols="50"></textarea>
                                 </div>
                             </div>
-                        </div>
-`
-    });
-
+                        </div>`
 }
+$("#add-step").on("click", function () {
+    
+        let num = $(".uk-grid-small").length;
+        let html_step = createStep(num + 1);
+        let div = document.createElement("div")
+        div.innerHTML = html_step;
+        $("#uk-article-add").append(div);
+    
+})
 function addIngrendient() {
     var volume = $("input[name=volume]").val();
     var ingrendient_name = $("input[name=ingrendient-name]").val();
-    var unit = $("select[name=unit]").val();
-
+    var unit = $("select[name=unit-incre]").val();
+    if (volume <= 0 && ingrendient_name.length == 0) {
+        $("#msg-error").text("Vui lòng nhập thông tin");
+        return;
+    }
     number_ingrendient = $(".ingrendient-number").length + 1;
     $(".ingrendients").html(function (index, currentcontent) {
         return currentcontent + `
@@ -93,9 +121,9 @@ function remove(number) {
     $("#step-" + number).remove();
     $.each($(".uk-element"), function (index, element) {
         index++;
-        console.log(element.replaceWith(index + ".Step"),index);
+        console.log(element.replaceWith(index + ".Step"), index);
     });
-  
+
 }
 function removeTag(item) {
     arr.pop(item.dataset["tag"]);
@@ -115,7 +143,7 @@ function addTag(value) {
 
     if (flag == false) {
         $(".tags").html(function (index, text) {
-            return text + ` <a class="uk-display-inline-block tag-this" data-tag="` + value+`" onclick="removeTag(this)" ><span class="uk-label uk-label-light">` + value + `</span></a>`
+            return text + ` <a class="uk-display-inline-block tag-this" data-tag="` + value + `" onclick="removeTag(this)" ><span class="uk-label uk-label-light">` + value + `</span></a>`
         })
     }
     arr.push(value);
@@ -126,7 +154,7 @@ function addTag(value) {
             return true;
         }
     })
-        
+
 }
 
 $("#btnThumbnailLink").click(
@@ -141,16 +169,15 @@ var myWidget_thumbnail = cloudinary.createUploadWidget(
     },
     (error, result) => {
         if (!error && result && result.event === "success") {
-  
-            $(".upload_button_holder").html(function (index, text) {
-                return text + `
-                                    <div class="p-2" style="position: relative;width:200px">
-                                        <input type="hidden" value="${result.info.secure_url}" class="imgs"/>
-                                        <img data-delete="${result.info.delete_token}" class="border border-primary" style="margin:5px;padding:5px;height:150px;object-fit:cover;width:200px;" src="${result.info.secure_url}" />
-                                        <input onclick="removeIamge()" class="btn btn-warning uk-padding-remove" style="position:absolute;top:0;left:90%;height:30px;" type="button" value="Remove">
-                                    </div>`;
+            $(".upload_button_holder").html(function () {
+                return `
+                    <div class="p-2" style="position: relative;width:200px">
+                        <input type="hidden" value="${result.info.secure_url}" id="img-article"/>
+                        <img data-delete="${result.info.delete_token}" class="border border-primary" style="margin:5px;padding:5px;height:150px;object-fit:cover;width:200px;" src="${result.info.secure_url}" />
+                        <input onclick="removeIamge()" class="btn btn-warning uk-padding-remove" style="position:absolute;top:0;left:90%;height:30px;" type="button" value="Remove">
+                    </div>`;
             })
-             
+
         }
     }
 );

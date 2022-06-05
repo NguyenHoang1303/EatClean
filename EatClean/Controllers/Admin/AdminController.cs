@@ -21,6 +21,7 @@ namespace EatClean.Entity
         {
             return View("~/Views/Admin/Tag/Create.cshtml");
         }
+
         [HttpPost]
         public String CreateTag(string tag_name)
         {
