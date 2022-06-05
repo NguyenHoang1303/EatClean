@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var categoryEdit = ViewBag.categoryEdit;
+    var categories = ViewBag.categories;
+}
+@section styles
+    {
+    <link rel="shortcut icon" href="/images/favicon.png" />
+
+    <link rel="stylesheet" href="/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/main.css" />
+    <link rel="stylesheet" href="/Content/upload.css" />
+    <script src="/Scripts/uikit.js"></script>
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Form</h4>
+                <p class="card-description">
+                    Create Category
+                </p>
+                <form class="forms-sample">
+                    @if (categoryEdit != null)
+                    {
+                        <input type="text" hidden name="id" id="idCate" value="@categoryEdit.Id" />
+                    }
+                    <div class="form-group">
+                        <label for="exampleInputUsername1">Name</label>
+                        <input type="text" name="name" class="form-control border border-secondary" id="nameCate"
+                               value="@(categoryEdit != null && !string.IsNullOrEmpty(categoryEdit.Name) ? categoryEdit.Name : "")">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Description</label>
+                        <textarea name="description" class="form-control border border-secondary" id="descriptionCate" rows="4" cols="50">@(categoryEdit != null && !string.IsNullOrEmpty(categoryEdit.Description) ? categoryEdit.Description : "")</textarea>
+                    </div>
+                    <div class="form-group ">
+                        <label for="exampleInputPassword1">Category Parent</label>
+                        <select name="categoryParent" id="categoryParent" class="form-control border border-secondary">
+                            <option value="0">Không có</option>
+                            @if (categories != null)
+                            {
+                                foreach (var cate in categories)
+                                {
+                                    if (cate.Id != categoryEdit.Id)
+                                    {
+                                        <option value="0" @(cate.Id == categoryEdit.ParentId ? "selected" : "")>@cate.Name</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </form>
+                <div class="card-body text-center">
+                    @{ 
+                        var url = Request.Url.ToString().Contains("Category/Edit");
+                    }
+                   
+                    @if (url)
+                    {
+                        <button type="button" onclick="updateCategory()" id="updateCate" class="btn btn-primary mr-2">
+                            Update
+                        </button>
+                    }
+                    else
+                    {
+                        <button type="button" onclick="createCategory()" id="submitCate" class="btn btn-primary mr-2">
+                            Create
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- content-wrapper ends -->
+    <!-- partial -->
+</div>
+<script src="~/js/Admin/Category/index.js"></script>
+
