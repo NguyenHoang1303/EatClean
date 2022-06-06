@@ -12,6 +12,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.Services.WebApi;
 using PagedList;
 using Microsoft.AspNet.Identity.Owin;
+using EatClean.Request;
 
 namespace EatClean.Controllers.User
 {
@@ -37,7 +38,7 @@ namespace EatClean.Controllers.User
             if (page == null) page = 1;
             int pageSize = 8;
             int pageIndex = (page ?? 1);
-            var articles = myIdentityDbContext.Articles.ToList();
+            var articles = myIdentityDbContext.Articles.Where(a => a.Status == 1).ToList();
             PagedList.IPagedList<Article> pagedProduct = articles.ToPagedList(pageIndex, pageSize);
             return View(pagedProduct);
         }
@@ -71,11 +72,11 @@ namespace EatClean.Controllers.User
             int pageIndex = (page ?? 1);
             if(keyword == null)
             {
-                articles = myIdentityDbContext.Articles.ToList();
+                articles = myIdentityDbContext.Articles.Where(a => a.Status == 1).ToList();
             }
             else
             {
-                articles = myIdentityDbContext.Articles.Where(p => p.Title.Contains(keyword)).Where(p => p.Description.Contains(keyword)).ToList();
+                articles = myIdentityDbContext.Articles.Where(a => a.Status == 1).Where(p => p.Title.Contains(keyword)).Where(p => p.Description.Contains(keyword)).ToList();
             }
             if(orderBy != null)
             {
@@ -202,6 +203,86 @@ namespace EatClean.Controllers.User
         {
             HttpContext.GetOwinContext().Authentication.SignOut();
             return Redirect("/Kocina");
+        }
+
+        public ActionResult CreateArticle()
+        {
+            ViewBag.Tags = myIdentityDbContext.Tags.ToList();
+            ViewBag.Categories = myIdentityDbContext.Categories.ToList();
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = myIdentityDbContext.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+                ViewBag.UserId = user.Id;
+                return View(user);
+            }
+            else return View();
+        }
+
+        [HttpPost]
+        public bool CreateArticle(ArticleRequest article, string id)
+        {
+            if(id == null || myIdentityDbContext.Users.Find(id) == null)
+            {
+                return false;
+            }
+            if (!article.validation())
+            {
+                return false;
+            }
+            var categoty = myIdentityDbContext.Categories.Find(article.categoryId);
+            var tag = myIdentityDbContext.Tags.Find(article.tagId);
+            if (tag == null)
+            {
+                return false;
+            }
+
+            if (categoty == null)
+            {
+                return false;
+            }
+            var adt = new ArticleDetail()
+            {
+                Content = article.contents
+            };
+
+            try
+            {
+                var saveAdt = myIdentityDbContext.ArticleDetails.Add(adt);
+                myIdentityDbContext.SaveChanges();
+                var articleDetail = myIdentityDbContext.ArticleDetails.Where(p => p.Content == adt.Content).FirstOrDefault();
+
+                var a = new Article()
+                {
+                    Title = article.title,
+                    Description = article.description,
+                    AuthorId = 1,
+                    ArticleDetail = saveAdt,
+                    Status = 0,
+                    Category = categoty,
+                    Tags = tag,
+                    Thumbnail = article.thumbnail,
+                    CreatedAt = DateTime.Now.Ticks,
+                    UpdatedAt = DateTime.Now.Ticks,
+                    AD_Id = articleDetail.Id
+                };
+                myIdentityDbContext.Articles.Add(a);
+                myIdentityDbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public ActionResult ArticleDetail(int? id)
+        {
+            if (id != null)
+            {
+                var articleDetail = myIdentityDbContext.ArticleDetails.Find(id);
+                return View(articleDetail);
+            }
+            else return View("~/Shared/Error.cshtml");
         }
     }
 }
