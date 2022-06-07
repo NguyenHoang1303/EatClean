@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EatClean.Entity
 {
@@ -12,9 +10,9 @@ namespace EatClean.Entity
         public string Name { get; set; }
         public string Description { get; set; }
         public int Status { get; set; }
-        public long ?CreatedAt { get; set; }
-        public long ?UpdatedAt { get; set; }
-        public long ?DeletedAt { get; set; }
+        public long? CreatedAt { get; set; }
+        public long? UpdatedAt { get; set; }
+        public long? DeletedAt { get; set; }
 
         public bool validation()
         {

@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class seed1 : DbMigration
+    public partial class createAccssâ : DbMigration
     {
         public override void Up()
         {

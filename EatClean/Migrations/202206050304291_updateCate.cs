@@ -1,8 +1,7 @@
 ﻿namespace EatClean.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class updateCate : DbMigration
     {
         public override void Up()
@@ -17,7 +16,7 @@
             AlterColumn("dbo.Tags", "UpdatedAt", c => c.Long());
             AlterColumn("dbo.Tags", "DeleteAt", c => c.Long());
         }
-        
+
         public override void Down()
         {
             AlterColumn("dbo.Tags", "DeleteAt", c => c.Long(nullable: false));

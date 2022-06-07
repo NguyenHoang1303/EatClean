@@ -1,22 +1,24 @@
 ﻿using EatClean.Data;
 using EatClean.Entity;
+using EatClean.Request;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
-using Owin;
 using System.Web.Mvc;
-using Microsoft.VisualStudio.Services.WebApi;
-using PagedList;
-using Microsoft.AspNet.Identity.Owin;
-using EatClean.Request;
+using EatClean.Entity;
+using System.Data.Entity;
+using Newtonsoft.Json;
+using EatClean.Response;
 
 namespace EatClean.Controllers.User
 {
-   
+
     public class KocinaController : Controller
     {
         private DataContext myIdentityDbContext; // Bên Xác thực và Phân quyền
@@ -36,27 +38,45 @@ namespace EatClean.Controllers.User
         public ActionResult Index(int? page)
         {
             if (page == null) page = 1;
-            int pageSize = 8;
+            int pageSize = 9;
             int pageIndex = (page ?? 1);
-            var articles = myIdentityDbContext.Articles.Where(a => a.Status == 1).ToList();
-            PagedList.IPagedList<Article> pagedProduct = articles.ToPagedList(pageIndex, pageSize);
+            var articles = myIdentityDbContext.Articles.Where(a => a.Status == 1);
+            PagedList.IPagedList<Article> pagedProduct = articles.OrderByDescending(a => a.CreatedAt).ToList().ToPagedList(pageIndex, pageSize);
+            ViewBag.categories = myIdentityDbContext.Categories.ToList();
             return View(pagedProduct);
         }
 
         public ActionResult Recipe(int? id)
         {
-            var article = myIdentityDbContext.Articles.Find(id);
+            var query = myIdentityDbContext.Articles.AsQueryable();
+            var article = query.Where(s => s.Id == id).Include(atc => atc.ArticleDetail).Include(atc => atc.Tags).FirstOrDefault();
             if (article == null)
             {
                 ViewBag.errorArticleDt = "Bài viết bị lỗi, vui lòng quay lại sau.";
                 return RedirectToAction("Index");
             }
-           
-            var a = article.ArticleDetail;
-            ViewBag.article = article;
-            ViewBag.articleDetail = a;
-           
-            return View();
+            if (string.Equals(article.AuthorId, "1"))
+            {
+                ViewBag.authorName = "Admin";
+                ViewBag.totalAricleByAuthor = query.Where(s => string.Equals(s.AuthorId, "1")).Count();
+            }
+            string contents = article.ArticleDetail.Content;
+            dynamic a;
+            try
+            {
+                a = JsonConvert.DeserializeObject<AdtResponse>(contents);
+                ViewBag.steps = a.steps;
+                ViewBag.recipe = a.recipe;
+                ViewBag.article = article;
+                return View();
+            }
+            catch
+            {
+                ViewBag.errorArticleDt = "Bài viết bị lỗi, vui lòng quay lại sau.";
+                RedirectToAction("Index");
+            }
+            ViewBag.errorArticleDt = "Bài viết bị lỗi, vui lòng quay lại sau.";
+            return RedirectToAction("Index");
         }
 
         public ActionResult Contact()
@@ -68,35 +88,35 @@ namespace EatClean.Controllers.User
         [HttpGet]
         public ActionResult Articles(int? page, string keyword, string orderBy)
         {
-            List<Article> articles;
+            var articles = myIdentityDbContext.Articles.Where(a => a.Status == 1);
             ViewBag.Search = keyword;
             ViewBag.OrderBy = orderBy;
             if (page == null) page = 1;
             int pageSize = 8;
             int pageIndex = (page ?? 1);
-            if(keyword == null)
+            if (!string.IsNullOrEmpty(keyword))
             {
-                articles = myIdentityDbContext.Articles.Where(a => a.Status == 1).ToList();
+                articles = articles.Where(a => (a.Title.Contains(keyword)) || a.Description.Contains(keyword));
             }
-            else
-            {
-                articles = myIdentityDbContext.Articles.Where(a => a.Status == 1).Where(p => p.Title.Contains(keyword)).Where(p => p.Description.Contains(keyword)).ToList();
-            }
-            if(orderBy != null)
+            if (orderBy != null)
             {
                 switch (orderBy)
                 {
                     case "ascending":
-                       articles = articles.OrderBy(p => p.Title).ToList();
-                       break;
+                        articles = articles.OrderBy(p => p.Title);
+                        break;
                     case "descending":
-                       articles = articles.OrderByDescending(p => p.Title).ToList();
-                       break;
+                        articles = articles.OrderByDescending(p => p.Title);
+                        break;
                     default:
-                       break;
+                        break;
                 }
             }
-            PagedList.IPagedList<Article> pagedProduct = articles.ToPagedList(pageIndex, pageSize);
+            else
+            {
+                articles = articles.OrderByDescending(a => a.CreatedAt);
+            }
+            PagedList.IPagedList<Article> pagedProduct = articles.ToList().ToPagedList(pageIndex, pageSize);
             return View(pagedProduct);
         }
 
@@ -130,7 +150,7 @@ namespace EatClean.Controllers.User
                 return false;
             }
             string roleName2 = "User";
-            var result = await userManager.AddToRolesAsync(UserId,  roleName2); // Thêm nhiều Role cho 1 User
+            var result = await userManager.AddToRolesAsync(UserId, roleName2); // Thêm nhiều Role cho 1 User
             if (result.Succeeded)
             {
                 return true;
@@ -159,7 +179,7 @@ namespace EatClean.Controllers.User
             if (result.Succeeded)
             {
                 var queryUser = myIdentityDbContext.Users.AsQueryable().Where(userFind => userFind.UserName.Contains(Username)).FirstOrDefault();
-              
+
                 if (queryUser == null)
                 {
                     ViewBag.Errors = "An Error Occurred, Please Try Again!";
@@ -199,7 +219,11 @@ namespace EatClean.Controllers.User
                 SignInManager<Account, string> signInManager = new SignInManager<Account, string>(
                     userManager, Request.GetOwinContext().Authentication);
                 await signInManager.SignInAsync(user, false, false);
-                return Redirect("/Kocina");
+                if (userManager.IsInRole(user.Id, "Admin"))
+                {
+                    return Redirect("/Articles/Create");
+                }
+                else return Redirect("/Kocina");
             }
         }
 
@@ -219,13 +243,13 @@ namespace EatClean.Controllers.User
                 ViewBag.UserId = user.Id;
                 return View(user);
             }
-            else return View();
+            else return View("~/View/Konaci/CreateArticle.cshtml");
         }
 
         [HttpPost]
         public bool CreateArticle(ArticleRequest article, string id)
         {
-            if(id == null || myIdentityDbContext.Users.Find(id) == null)
+            if (id == null || myIdentityDbContext.Users.Find(id) == null)
             {
                 return false;
             }
@@ -253,13 +277,12 @@ namespace EatClean.Controllers.User
             {
                 var saveAdt = myIdentityDbContext.ArticleDetails.Add(adt);
                 myIdentityDbContext.SaveChanges();
-                var articleDetail = myIdentityDbContext.ArticleDetails.Where(p => p.Content == adt.Content).FirstOrDefault();
 
                 var a = new Article()
                 {
                     Title = article.title,
                     Description = article.description,
-                    AuthorId = 1,
+                    AuthorId = id,
                     ArticleDetail = saveAdt,
                     Status = 0,
                     Category = categoty,
@@ -267,7 +290,6 @@ namespace EatClean.Controllers.User
                     Thumbnail = article.thumbnail,
                     CreatedAt = DateTime.Now.Ticks,
                     UpdatedAt = DateTime.Now.Ticks,
-                  
                 };
                 myIdentityDbContext.Articles.Add(a);
                 myIdentityDbContext.SaveChanges();

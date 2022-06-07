@@ -7,13 +7,13 @@ namespace EatClean.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class initDB : IMigrationMetadata
+    public sealed partial class createAccssâ : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(createAccssâ));
         
         string IMigrationMetadata.Id
         {
-            get { return "202206021449007_initDB"; }
+            get { return "202206070603278_createAccssâ"; }
         }
         
         string IMigrationMetadata.Source

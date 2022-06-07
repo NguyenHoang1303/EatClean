@@ -49,9 +49,13 @@
                             {
                                 foreach (var cate in categories)
                                 {
-                                    if (cate.Id != categoryEdit.Id)
+                                    if (categoryEdit != null && cate.Id != categoryEdit.Id)
                                     {
                                         <option value="0" @(cate.Id == categoryEdit.ParentId ? "selected" : "")>@cate.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@cate.Id">@cate.Name</option>
                                     }
                                 }
                             }
