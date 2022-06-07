@@ -452,6 +452,22 @@
     <Compile Include="Migrations\202206050958003_updateAr.designer.cs">
       <DependentUpon>202206050958003_updateAr.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206070516261_createAcc.cs" />
+    <Compile Include="Migrations\202206070516261_createAcc.designer.cs">
+      <DependentUpon>202206070516261_createAcc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206070531251_createAccss.cs" />
+    <Compile Include="Migrations\202206070531251_createAccss.designer.cs">
+      <DependentUpon>202206070531251_createAccss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206070603278_createAccssâ.cs" />
+    <Compile Include="Migrations\202206070603278_createAccssâ.designer.cs">
+      <DependentUpon>202206070603278_createAccssâ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206070756207_createA.cs" />
+    <Compile Include="Migrations\202206070756207_createA.designer.cs">
+      <DependentUpon>202206070756207_createA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\ArticleRequest.cs" />
@@ -2377,6 +2393,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206050958003_updateAr.resx">
       <DependentUpon>202206050958003_updateAr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206070516261_createAcc.resx">
+      <DependentUpon>202206070516261_createAcc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206070531251_createAccss.resx">
+      <DependentUpon>202206070531251_createAccss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206070603278_createAccssâ.resx">
+      <DependentUpon>202206070603278_createAccssâ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206070756207_createA.resx">
+      <DependentUpon>202206070756207_createA.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace EatClean.Controllers.Admin
@@ -106,7 +105,7 @@ namespace EatClean.Controllers.Admin
 
         // POST: Category/Delete/5
         [HttpPost]
-        public bool Delete(int ?id)
+        public bool Delete(int? id)
         {
             var result = dataContext.Categories.Find(id);
             if (result == null)

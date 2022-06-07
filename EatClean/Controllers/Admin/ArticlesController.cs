@@ -2,9 +2,7 @@
 using EatClean.Entity;
 using EatClean.Request;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace EatClean.Controllers.Admin
@@ -61,7 +59,7 @@ namespace EatClean.Controllers.Admin
                 {
                     Title = article.title,
                     Description = article.description,
-                    AuthorId = 1,
+                    AuthorId = "1",
                     ArticleDetail = saveAdt,
                     Status = 1,
                     Category = categoty,

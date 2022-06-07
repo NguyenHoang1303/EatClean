@@ -1,8 +1,7 @@
 ﻿namespace EatClean.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class createData : DbMigration
     {
         public override void Up()
@@ -12,7 +11,7 @@
             DropColumn("dbo.ArticleDetails", "State");
             DropColumn("dbo.Articles", "State");
         }
-        
+
         public override void Down()
         {
             AddColumn("dbo.Articles", "State", c => c.Int(nullable: false));

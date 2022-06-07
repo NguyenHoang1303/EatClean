@@ -1,9 +1,5 @@
 ﻿using EatClean.Data;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace EatClean.Entity
@@ -25,7 +21,7 @@ namespace EatClean.Entity
         [HttpPost]
         public String CreateTag(string tag_name)
         {
-            
+
             Tag tag = new Tag()
             {
                 Name = tag_name,
@@ -36,12 +32,12 @@ namespace EatClean.Entity
             };
             try
             {
-            if (!string.IsNullOrEmpty(tag.Name))
-            {
-                _db.Tags.Add(tag);
-                _db.SaveChanges();
-                return "True";
-            }
+                if (!string.IsNullOrEmpty(tag.Name))
+                {
+                    _db.Tags.Add(tag);
+                    _db.SaveChanges();
+                    return "True";
+                }
             }
             catch (Exception ex)
             {

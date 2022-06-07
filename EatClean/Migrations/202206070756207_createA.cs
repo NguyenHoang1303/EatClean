@@ -3,16 +3,16 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class updateDb : DbMigration
+    public partial class createA : DbMigration
     {
         public override void Up()
         {
-            DropColumn("dbo.ArticleDetails", "CategoryId");
+            AlterColumn("dbo.Articles", "AuthorId", c => c.String());
         }
         
         public override void Down()
         {
-            AddColumn("dbo.ArticleDetails", "CategoryId", c => c.Int(nullable: false));
+            AlterColumn("dbo.Articles", "AuthorId", c => c.Int(nullable: false));
         }
     }
 }
