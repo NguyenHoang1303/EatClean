@@ -11,6 +11,8 @@ namespace EatClean.Entity
         public int AuthorId { get; set; }
         public Category Category { get; set; }
         public ArticleDetail ArticleDetail { get; set; }
+        [NotMapped]
+        public int AD_Id { get; set; }
         public Tag Tags { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
