@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using EatClean.Entity;
+using System.Data.Entity;
+using Newtonsoft.Json;
+using EatClean.Response;
 
 namespace EatClean.Controllers.User
 {
@@ -32,32 +35,48 @@ namespace EatClean.Controllers.User
         }
 
         // GET: Kocina
-        public ActionResult Index(int? page, int? categoryId, string keyword)
+        public ActionResult Index(int? page)
         {
             if (page == null) page = 1;
             int pageSize = 9;
             int pageIndex = (page ?? 1);
-            var articles = myIdentityDbContext.Articles.Where(a => a.Status == 1).ToList();
-            PagedList.IPagedList<Article> pagedProduct = articles.ToPagedList(pageIndex, pageSize);
+            var articles = myIdentityDbContext.Articles.Where(a => a.Status == 1);
+            PagedList.IPagedList<Article> pagedProduct = articles.OrderByDescending(a => a.CreatedAt).ToList().ToPagedList(pageIndex, pageSize);
             ViewBag.categories = myIdentityDbContext.Categories.ToList();
             return View(pagedProduct);
         }
 
         public ActionResult Recipe(int? id)
         {
-            var article = myIdentityDbContext.Articles.Find(id);
+            var query = myIdentityDbContext.Articles.AsQueryable();
+            var article = query.Where(s => s.Id == id).Include(atc => atc.ArticleDetail).Include(atc => atc.Tags).FirstOrDefault();
             if (article == null)
             {
                 ViewBag.errorArticleDt = "Bài viết bị lỗi, vui lòng quay lại sau.";
                 return RedirectToAction("Index");
             }
-
-            var a = article.ArticleDetail;
-          
-            ViewBag.articleDetail = a;
-            ViewBag.article = article;
-
-            return View();
+            if (string.Equals(article.AuthorId, "1"))
+            {
+                ViewBag.authorName = "Admin";
+                ViewBag.totalAricleByAuthor = query.Where(s => string.Equals(s.AuthorId, "1")).Count();
+            }
+            string contents = article.ArticleDetail.Content;
+            dynamic a;
+            try
+            {
+                a = JsonConvert.DeserializeObject<AdtResponse>(contents);
+                ViewBag.steps = a.steps;
+                ViewBag.recipe = a.recipe;
+                ViewBag.article = article;
+                return View();
+            }
+            catch
+            {
+                ViewBag.errorArticleDt = "Bài viết bị lỗi, vui lòng quay lại sau.";
+                RedirectToAction("Index");
+            }
+            ViewBag.errorArticleDt = "Bài viết bị lỗi, vui lòng quay lại sau.";
+            return RedirectToAction("Index");
         }
 
         public ActionResult Contact()
@@ -69,35 +88,35 @@ namespace EatClean.Controllers.User
         [HttpGet]
         public ActionResult Articles(int? page, string keyword, string orderBy)
         {
-            List<Article> articles;
+            var articles = myIdentityDbContext.Articles.Where(a => a.Status == 1);
             ViewBag.Search = keyword;
             ViewBag.OrderBy = orderBy;
             if (page == null) page = 1;
             int pageSize = 8;
             int pageIndex = (page ?? 1);
-            if (keyword == null)
+            if (!string.IsNullOrEmpty(keyword))
             {
-                articles = myIdentityDbContext.Articles.Where(a => a.Status == 1).ToList();
-            }
-            else
-            {
-                articles = myIdentityDbContext.Articles.Where(a => a.Status == 1).Where(p => p.Title.Contains(keyword)).Where(p => p.Description.Contains(keyword)).ToList();
+                articles = articles.Where(a => (a.Title.Contains(keyword)) || a.Description.Contains(keyword));
             }
             if (orderBy != null)
             {
                 switch (orderBy)
                 {
                     case "ascending":
-                        articles = articles.OrderBy(p => p.Title).ToList();
+                        articles = articles.OrderBy(p => p.Title);
                         break;
                     case "descending":
-                        articles = articles.OrderByDescending(p => p.Title).ToList();
+                        articles = articles.OrderByDescending(p => p.Title);
                         break;
                     default:
                         break;
                 }
             }
-            PagedList.IPagedList<Article> pagedProduct = articles.ToPagedList(pageIndex, pageSize);
+            else
+            {
+                articles = articles.OrderByDescending(a => a.CreatedAt);
+            }
+            PagedList.IPagedList<Article> pagedProduct = articles.ToList().ToPagedList(pageIndex, pageSize);
             return View(pagedProduct);
         }
 

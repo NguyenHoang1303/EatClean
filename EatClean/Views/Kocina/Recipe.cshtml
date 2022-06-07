@@ -1,13 +1,18 @@
 ﻿
 @{
     ViewBag.Title = "Recipe";
+    var article = ViewBag.article;
+    var recipe = ViewBag.recipe;
+    var steps = ViewBag.steps;
+    var authorName = ViewBag.authorName;
+    var totalAricleByAuthor = ViewBag.totalAricleByAuthor;
 }
 
 <div class="uk-container">
     <div data-uk-grid>
         <div class="uk-width-1-2@s">
             <div>
-                <img class="uk-border-rounded-large" src="https://via.placeholder.com/600x600"
+                <img class="uk-border-rounded-large" src="@article.Thumbnail"
                      alt="Image alt">
             </div>
         </div>
@@ -39,16 +44,8 @@
                 <hr>
                 <div data-uk-grid>
                     <div class="uk-width-auto@s uk-text-small">
-                        <p class="uk-margin-small-top uk-margin-remove-bottom">Created by <a href="#">Alex Williamns</a></p>
-                        <span class="uk-text-muted">21 recipes</span>
-                    </div>
-                    <div class="uk-width-expand@s uk-flex uk-flex-middle uk-flex-right@s">
-                        <a href="#" class="uk-icon-link" data-uk-icon="icon: plus-circle; ratio: 1.2"
-                           data-uk-tooltip="title: Save Recipe"></a>
-                        <a href="#" class="uk-icon-link uk-margin-left" data-uk-icon="icon: cart; ratio: 1.2"
-                           data-uk-tooltip="title: Shopping List"></a>
-                        <a href="#" class="uk-icon-link uk-margin-left" data-uk-icon="icon: print; ratio: 1.2"
-                           data-uk-tooltip="title: Print Recipe"></a>
+                        <p class="uk-margin-small-top uk-margin-remove-bottom">Created by <a href="#">@(authorName == null ? "Admin" : authorName)</a></p>
+                        <span class="uk-text-muted">@(totalAricleByAuthor == null ? "Unknown" : totalAricleByAuthor) recipes</span>
                     </div>
                 </div>
             </div>
@@ -62,62 +59,26 @@
             <div class="uk-width-expand@m">
                 <div class="uk-article">
                     <h3>How to Make It</h3>
-                    <div id="step-1" class="uk-grid-small uk-margin-medium-top" data-uk-grid>
-                        <div class="uk-width-auto">
-                            <a href="#" class="uk-step-icon" data-uk-icon="icon: check; ratio: 0.8"
-                               data-uk-toggle="target: #step-1; cls: uk-step-active"></a>
-                        </div>
-                        <div class="uk-width-expand">
-                            <h5 class="uk-step-title uk-text-500 uk-text-uppercase uk-text-primary" data-uk-leader="fill:—">1. Step</h5>
-                            <div class="uk-step-content">
-                                Labour, of evaluated would he the a the our what is in the arduous sides behavioural is which the
-                                have didn't kicked records the it framework by the for traveler sure the can most well her.
-                                Entered have break himself cheek, and activity, for bit of text.
+                    @if (steps != null && steps.Count > 0)
+                    {
+                        int num = 0;
+                        foreach (var element in steps)
+                        {
+                            num++;
+                            <div id="step-@num" class="uk-grid-small uk-margin-medium-top" data-uk-grid>
+                                <div class="uk-width-auto">
+                                    <a href="#" class="uk-step-icon" data-uk-icon="icon: check; ratio: 0.8"
+                                       data-uk-toggle="target: #step-1; cls: uk-step-active"></a>
+                                </div>
+                                <div class="uk-width-expand">
+                                    <h5 class="uk-step-title uk-text-500 uk-text-uppercase uk-text-primary" data-uk-leader="fill:—">@num. Step</h5>
+                                    <div class="uk-step-content">
+                                       @element
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div id="step-2" class="uk-grid-small uk-margin-medium-top" data-uk-grid>
-                        <div class="uk-width-auto">
-                            <a href="#" class="uk-step-icon" data-uk-icon="icon: check; ratio: 0.8"
-                               data-uk-toggle="target: #step-2; cls: uk-step-active"></a>
-                        </div>
-                        <div class="uk-width-expand">
-                            <h5 class="uk-step-title uk-text-500 uk-text-uppercase uk-text-primary" data-uk-leader="fill:—">2. Step</h5>
-                            <div class="uk-step-content">
-                                Labour, of evaluated would he the a the our what is in the arduous sides behavioural is which the
-                                have didn't kicked records the it framework by the for traveler sure the can most well her.
-                                Entered have break himself cheek, and activity, for bit of text.
-                            </div>
-                        </div>
-                    </div>
-                    <div id="step-3" class="uk-grid-small uk-margin-medium-top" data-uk-grid>
-                        <div class="uk-width-auto">
-                            <a href="#" class="uk-step-icon" data-uk-icon="icon: check; ratio: 0.8"
-                               data-uk-toggle="target: #step-3; cls: uk-step-active"></a>
-                        </div>
-                        <div class="uk-width-expand">
-                            <h5 class="uk-step-title uk-text-500 uk-text-uppercase uk-text-primary" data-uk-leader="fill:—">3. Step</h5>
-                            <div class="uk-step-content">
-                                Labour, of evaluated would he the a the our what is in the arduous sides behavioural is which the
-                                have didn't kicked records the it framework by the for traveler sure the can most well her.
-                                Entered have break himself cheek, and activity, for bit of text.
-                            </div>
-                        </div>
-                    </div>
-                    <div id="step-4" class="uk-grid-small uk-margin-medium-top" data-uk-grid>
-                        <div class="uk-width-auto">
-                            <a href="#" class="uk-step-icon" data-uk-icon="icon: check; ratio: 0.8"
-                               data-uk-toggle="target: #step-4; cls: uk-step-active"></a>
-                        </div>
-                        <div class="uk-width-expand">
-                            <h5 class="uk-step-title uk-text-500 uk-text-uppercase uk-text-primary" data-uk-leader="fill:—">4. Step</h5>
-                            <div class="uk-step-content">
-                                Labour, of evaluated would he the a the our what is in the arduous sides behavioural is which the
-                                have didn't kicked records the it framework by the for traveler sure the can most well her.
-                                Entered have break himself cheek, and activity, for bit of text.
-                            </div>
-                        </div>
-                    </div>
+                        }
+                    }
                     <hr class="uk-margin-medium-top uk-margin-large-bottom">
                     <h3>Comments</h3>
                     <ul class="uk-comment-list uk-margin-medium-top">
@@ -220,25 +181,19 @@
             <div class="uk-width-1-3@m">
                 <h3>Ingredients</h3>
                 <ul class="uk-list uk-list-large uk-list-divider uk-margin-medium-top">
-                    <li>1 pound fresh prepared pizza dough</li>
-                    <li>6 ounces shredded mozzarella cheese</li>
-                    <li>3/4 cup of ricotta cheese</li>
-                    <li>1 large egg yolk</li>
-                    <li>1/2 teaspoon lemon zest</li>
-                    <li>2 finely grated garlic cloves</li>
-                    <li>1/2 teaspoon kosher salt</li>
-                    <li>1/4 teaspoon black pepper</li>
-                    <li>1 large egg</li>
-                    <li>1 teaspoon dried Italian seasoning</li>
+                    @if (recipe != null && recipe.Count > 0)
+                    {
+                        foreach (var element in recipe)
+                        {
+                            <li>@element</li>
+                        }
+                    }
                 </ul>
                 <h3 class="uk-margin-large-top">Tags</h3>
                 <div class="uk-margin-medium-top" data-uk-margin>
-                    <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">dinner</span></a>
-                    <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">casserole</span></a>
-                    <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">party</span></a>
-                    <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">meat</span></a>
+                    <a class="uk-display-inline-block" href="#"><span class="uk-label uk-label-light">@article.Tags.Name</span></a>
                 </div>
-                <h3 class="uk-margin-large-top">Share Recipe</h3>
+                @*<h3 class="uk-margin-large-top">Share Recipe</h3>
                 <div class="uk-margin-medium-top">
                     <div data-uk-grid class="uk-child-width-auto uk-grid-small">
                         <div>
@@ -251,7 +206,7 @@
                             <a href="#" data-uk-icon="icon: twitter; ratio: 0.9" class="uk-icon-button twitter" target="_blank"></a>
                         </div>
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>
