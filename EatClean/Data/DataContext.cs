@@ -14,5 +14,6 @@ namespace EatClean.Data
         public DbSet<ArticleDetail> ArticleDetails { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Book> Books { get; set; }
     }
 }

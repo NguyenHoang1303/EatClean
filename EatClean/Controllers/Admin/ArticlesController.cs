@@ -1,7 +1,9 @@
 ﻿using EatClean.Data;
 using EatClean.Entity;
 using EatClean.Request;
+using PagedList;
 using System;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -15,9 +17,15 @@ namespace EatClean.Controllers.Admin
             _db = new DataContext();
         }
         // GET: Articles
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View();
+            if (page == null) page = 1;
+            int pageSize = 9;
+            int pageIndex = (page ?? 1);
+            var articles = _db.Articles.ToList();
+            PagedList.IPagedList<Article> pagedProduct = articles.ToPagedList(pageIndex, pageSize);
+            ViewBag.categories = _db.Categories.ToList();
+            return View("~/Views/Admin/Articles/Index.cshtml", pagedProduct);
         }
 
         public ActionResult Create()
@@ -52,15 +60,14 @@ namespace EatClean.Controllers.Admin
 
             try
             {
-                var saveAdt = _db.ArticleDetails.Add(adt);
-                _db.SaveChanges();
-
+              
+               
                 var a = new Article()
                 {
                     Title = article.title,
                     Description = article.description,
                     AuthorId = "1",
-                    ArticleDetail = saveAdt,
+                    ArticleDetail = adt,
                     Status = 1,
                     Category = categoty,
                     Tags = tag,
@@ -69,6 +76,26 @@ namespace EatClean.Controllers.Admin
                     UpdatedAt = DateTime.Now.Ticks,
                 };
                 _db.Articles.Add(a);
+                _db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateStatus(int? articleId, int? status)
+        {
+            var article = _db.Articles.Find(articleId);
+            if (article == null)
+            {
+                return false;
+            }
+            article.Status = (int) status;
+            try
+            {
+                _db.Articles.AddOrUpdate(article);
                 _db.SaveChanges();
                 return true;
             }

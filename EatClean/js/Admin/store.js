@@ -182,3 +182,4 @@ var myWidget_thumbnail = cloudinary.createUploadWidget(
     }
 );
 
+
