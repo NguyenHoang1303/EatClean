@@ -200,7 +200,11 @@ namespace EatClean.Controllers.User
                 SignInManager<Account, string> signInManager = new SignInManager<Account, string>(
                     userManager, Request.GetOwinContext().Authentication);
                 await signInManager.SignInAsync(user, false, false);
-                return Redirect("/Kocina");
+                if (userManager.IsInRole(user.Id, "Admin"))
+                {
+                    return Redirect("/Articles/Create");
+                }
+                else return Redirect("/Kocina");
             }
         }
 
