@@ -1,4 +1,10 @@
-﻿namespace EatClean.Migrations
+
+﻿using EatClean.Data;
+using EatClean.Entity;
+using System.Data.Entity.Migrations;
+
+namespace EatClean.Migrations
+
 {
     using EatClean.Entity;
     using Microsoft.AspNet.Identity;
@@ -17,7 +23,6 @@
 
         protected override void Seed(EatClean.Data.DataContext context)
         {
-           
         }
     }
 }

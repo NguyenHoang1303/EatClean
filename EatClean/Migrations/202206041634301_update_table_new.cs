@@ -1,8 +1,7 @@
 ﻿namespace EatClean.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class update_table_new : DbMigration
     {
         public override void Up()
@@ -15,7 +14,7 @@
             AddForeignKey("dbo.Articles", "Category_Id", "dbo.Categories", "Id");
             DropColumn("dbo.Articles", "CategoryId");
         }
-        
+
         public override void Down()
         {
             AddColumn("dbo.Articles", "CategoryId", c => c.Int(nullable: false));
