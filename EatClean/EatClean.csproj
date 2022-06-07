@@ -340,6 +340,7 @@
     <Compile Include="Entity\Article.cs" />
     <Compile Include="Entity\ArticleDetail.cs" />
     <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\LoginViewModel.cs" />
     <Compile Include="Entity\Role.cs" />
     <Compile Include="Entity\Tag.cs" />
     <Compile Include="Entity\UserViewModel.cs" />
@@ -502,7 +503,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\Modal.css" />
+    <Content Include="Scripts\store.js" />
     <Content Include="Content\upload.css" />
+    <Content Include="css\vertical-layout-light\style.css" />
+    <Content Include="FakesAssemblies\Faker.Net.4.5.2.0.154.0.Fakes.dll" />
+    <Content Include="FakesAssemblies\Faker.Net.4.5.2.0.154.0.Fakes.xml" />
+    <Content Include="FakesAssemblies\Microsoft.AspNet.Identity.Core.2.0.0.0.Fakes.dll" />
+    <Content Include="FakesAssemblies\Microsoft.AspNet.Identity.Core.2.0.0.0.Fakes.xml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -765,6 +773,11 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="css\maps\vertical-layout-light\style.css.map" />
+    <Content Include="FakesAssemblies\Faker.Net.4.5.2.0.154.0.Fakes.fakesconfig" />
+    <Content Include="FakesAssemblies\Faker.Net.4.5.2.0.154.0.Fakes.messages" />
+    <Content Include="FakesAssemblies\Microsoft.AspNet.Identity.Core.2.0.0.0.Fakes.fakesconfig" />
+    <Content Include="FakesAssemblies\Microsoft.AspNet.Identity.Core.2.0.0.0.Fakes.messages" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\EatClean - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -2124,10 +2137,12 @@
     <Content Include="Views\Admin\Tag\Create.cshtml" />
     <Content Include="Views\Kocina\UserDetail.cshtml" />
     <Content Include="Views\Admin\Articles\Create.cshtml" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\Admin\Category\Create.cshtml" />
     <Content Include="Views\Admin\Category\Index.cshtml" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Kocina\CreateArticle.cshtml" />
+    <Content Include="Views\Kocina\ArticleDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Kocina\Recipe.cshtml" />

@@ -26,7 +26,7 @@ namespace EatClean.Controllers.Admin
         {
             ViewBag.Tags = _db.Tags.ToList();
             ViewBag.Categories = _db.Categories.ToList();
-            return View("~/Views/Admin/Articles/Create.cshtml");
+            return View();
         }
 
         [HttpPost]
@@ -78,7 +78,6 @@ namespace EatClean.Controllers.Admin
             {
                 return false;
             }
-            
         }
     }
 }
