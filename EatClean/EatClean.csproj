@@ -2412,9 +2412,6 @@
     <EmbeddedResource Include="Migrations\202206050958003_updateAr.resx">
       <DependentUpon>202206050958003_updateAr.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202206070841373_seeDb.resx">
-      <DependentUpon>202206070841373_seeDb.cs</DependentUpon>
-
     <EmbeddedResource Include="Migrations\202206070516261_createAcc.resx">
       <DependentUpon>202206070516261_createAcc.cs</DependentUpon>
     </EmbeddedResource>
