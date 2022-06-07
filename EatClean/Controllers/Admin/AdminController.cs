@@ -28,15 +28,7 @@ namespace EatClean.Entity
         {
             return View("~/Views/Admin/Tag/Create.cshtml");
         }
-        public ActionResult CreateBook()
-        {
-            return View("~/Views/Admin/Book/Book.cshtml");
-        }
-        [HttpPost]
-        public String StoreBook(string name, double price,string authorName,int status,string thumbnail)
-        {
-            return name + price + authorName + status + thumbnail;
-        }
+
         [HttpPost]
         public String CreateTag(string tag_name)
         {
