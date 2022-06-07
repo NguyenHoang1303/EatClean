@@ -10,6 +10,7 @@ namespace EatClean.Entity
         public int Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
+        public int Status { get; set; }
         public string Thumbnail { get; set; }
         public string AuthorName { get; set; }
     }

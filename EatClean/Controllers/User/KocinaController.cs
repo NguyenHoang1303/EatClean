@@ -267,7 +267,7 @@ namespace EatClean.Controllers.User
                     Thumbnail = article.thumbnail,
                     CreatedAt = DateTime.Now.Ticks,
                     UpdatedAt = DateTime.Now.Ticks,
-                    AD_Id = articleDetail.Id
+                  
                 };
                 myIdentityDbContext.Articles.Add(a);
                 myIdentityDbContext.SaveChanges();

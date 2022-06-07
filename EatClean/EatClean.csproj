@@ -380,6 +380,10 @@
     <Compile Include="Migrations\202206071111272_create_book_table.designer.cs">
       <DependentUpon>202206071111272_create_book_table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206071139039_create_book_table_2.cs" />
+    <Compile Include="Migrations\202206071139039_create_book_table_2.designer.cs">
+      <DependentUpon>202206071139039_create_book_table_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\ArticleRequest.cs" />
@@ -519,6 +523,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="js\Admin\book.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -2148,6 +2153,7 @@
     <Content Include="Views\Kocina\ArticleDetail.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Admin\Book\Book.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Kocina\Recipe.cshtml" />
@@ -2308,6 +2314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206071111272_create_book_table.resx">
       <DependentUpon>202206071111272_create_book_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206071139039_create_book_table_2.resx">
+      <DependentUpon>202206071139039_create_book_table_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
