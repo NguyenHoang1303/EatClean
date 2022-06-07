@@ -453,9 +453,6 @@
     <Compile Include="Migrations\202206050958003_updateAr.designer.cs">
       <DependentUpon>202206050958003_updateAr.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202206070841373_seeDb.cs" />
-    <Compile Include="Migrations\202206070841373_seeDb.designer.cs">
-      <DependentUpon>202206070841373_seeDb.cs</DependentUpon>
     <Compile Include="Migrations\202206070516261_createAcc.cs" />
     <Compile Include="Migrations\202206070516261_createAcc.designer.cs">
       <DependentUpon>202206070516261_createAcc.cs</DependentUpon>
