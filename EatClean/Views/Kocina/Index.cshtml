@@ -2,6 +2,7 @@
 @using PagedList.Mvc;
 @{
     ViewBag.Title = "Home Page";
+    var msg = ViewBag.errorArticleDt;
 }
 
 <div class="uk-container">
@@ -112,25 +113,25 @@
                         <div>
                             <div class="uk-card">
                                 <div class="uk-card-media-top uk-inline uk-light">
-                                    <img class="uk-border-rounded-medium" src="https://via.placeholder.com/300x160" alt="Course Title">
+                                    <img class="uk-border-rounded-medium" src="@(!string.IsNullOrEmpty(item.Thumbnail) ? item.Thumbnail : "https://via.placeholder.com/300x160")" alt="Course Title">
                                     <div class="uk-position-cover uk-card-overlay uk-border-rounded-medium"></div>
                                     <div class="uk-position-xsmall uk-position-top-right">
-                                        <a href="#" class="uk-icon-button uk-like uk-position-z-index uk-position-relative"
-                                           data-uk-icon="heart"></a>
+                                        @*<a href="#" class="uk-icon-button uk-like uk-position-z-index uk-position-relative"
+                                           data-uk-icon="heart"></a>*@
                                     </div>
                                 </div>
                                 <div>
-                                    <h3 class="uk-card-title uk-text-500 uk-margin-small-bottom uk-margin-top">@item.Title</h3>
+                                    <h3 class="uk-card-title uk-text-500 uk-margin-small-bottom uk-margin-top">@(!string.IsNullOrEmpty(item.Title) ? item.Title : "No Title")</h3>
                                     <div class="uk-text-xsmall uk-text-muted" data-uk-grid>
                                         <div class="uk-width-auto uk-flex uk-flex-middle">
-                                            <span class="uk-rating-filled" data-uk-icon="icon: star; ratio: 0.7"></span>
+                                            @*<span class="uk-rating-filled" data-uk-icon="icon: star; ratio: 0.7"></span>
                                             <span class="uk-margin-xsmall-left">5.0</span>
-                                            <span>(73)</span>
+                                            <span>(73)</span>*@
                                         </div>
-                                        <div class="uk-width-expand uk-text-right">by Admin</div>
+                                        <div class="uk-width-expand uk-text-right">@(item.AuthorId == 1 ? "by Admin" : item.AuthorId.ToString())</div>
                                     </div>
                                 </div>
-                                <a href="/Kocina/Recipe" class="uk-position-cover"></a>
+                                <a href="/Kocina/Recipe/@item.Id" class="uk-position-cover"></a>
                             </div>
                         </div>
                     }

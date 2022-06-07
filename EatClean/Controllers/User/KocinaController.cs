@@ -47,10 +47,14 @@ namespace EatClean.Controllers.User
             var article = myIdentityDbContext.Articles.Find(id);
             if (article == null)
             {
-                return View("Index");
+                ViewBag.errorArticleDt = "Bài viết bị lỗi, vui lòng quay lại sau.";
+                return RedirectToAction("Index");
             }
+           
+            var a = article.ArticleDetail;
             ViewBag.article = article;
-            ViewBag.content = article.ArticleDetail.Content;
+            ViewBag.articleDetail = a;
+           
             return View();
         }
 
