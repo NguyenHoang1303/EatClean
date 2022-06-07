@@ -379,9 +379,6 @@
     <Compile Include="Migrations\202206071139039_create_book_table_2.designer.cs">
       <DependentUpon>202206071139039_create_book_table_2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202206071249074_update_table.cs" />
-    <Compile Include="Migrations\202206071249074_update_table.designer.cs">
-      <DependentUpon>202206071249074_update_table.cs</DependentUpon>
     <Compile Include="Migrations\202206070516261_createAcc.cs" />
     <Compile Include="Migrations\202206070516261_createAcc.designer.cs">
       <DependentUpon>202206070516261_createAcc.cs</DependentUpon>
@@ -2338,8 +2335,6 @@
     <EmbeddedResource Include="Migrations\202206071139039_create_book_table_2.resx">
       <DependentUpon>202206071139039_create_book_table_2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202206071249074_update_table.resx">
-      <DependentUpon>202206071249074_update_table.cs</DependentUpon>
     <EmbeddedResource Include="Migrations\202206070516261_createAcc.resx">
       <DependentUpon>202206070516261_createAcc.cs</DependentUpon>
     </EmbeddedResource>
