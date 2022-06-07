@@ -2344,15 +2344,6 @@
     <EmbeddedResource Include="Migrations\202206070516261_createAcc.resx">
       <DependentUpon>202206070516261_createAcc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202206070531251_createAccss.resx">
-      <DependentUpon>202206070531251_createAccss.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202206070603278_createAccssâ.resx">
-      <DependentUpon>202206070603278_createAccssâ.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202206070756207_createA.resx">
-      <DependentUpon>202206070756207_createA.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206071136261_hello.resx">
       <DependentUpon>202206071136261_hello.cs</DependentUpon>
     </EmbeddedResource>
