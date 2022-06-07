@@ -199,7 +199,11 @@ namespace EatClean.Controllers.User
                 SignInManager<Account, string> signInManager = new SignInManager<Account, string>(
                     userManager, Request.GetOwinContext().Authentication);
                 await signInManager.SignInAsync(user, false, false);
-                return Redirect("/Kocina");
+                if (userManager.IsInRole(user.Id, "Admin"))
+                {
+                    return Redirect("/Articles/Create");
+                }
+                else return Redirect("/Kocina");
             }
         }
 
@@ -259,7 +263,7 @@ namespace EatClean.Controllers.User
                 {
                     Title = article.title,
                     Description = article.description,
-                    AuthorId = 1,
+                    AuthorId = "1",
                     ArticleDetail = saveAdt,
                     Status = 0,
                     Category = categoty,

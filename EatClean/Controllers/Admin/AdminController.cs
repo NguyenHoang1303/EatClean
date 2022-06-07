@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace EatClean.Entity
 {
+    [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         protected DataContext _db;

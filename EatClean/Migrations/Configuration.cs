@@ -1,6 +1,8 @@
 ﻿namespace EatClean.Migrations
 {
     using EatClean.Entity;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -15,21 +17,7 @@
 
         protected override void Seed(EatClean.Data.DataContext context)
         {
-            var adminRole = new Role()
-            {
-                Name = "Admin",
-                CreatedAt = DateTime.Now.Ticks,
-                UpdatedAt = DateTime.Now.Ticks
-            };
-            var userRole = new Role()
-            {
-                Name = "User",
-                CreatedAt = DateTime.Now.Ticks,
-                UpdatedAt = DateTime.Now.Ticks
-            };
-            context.Roles.Add(adminRole);
-            context.Roles.Add(userRole);
-            context.SaveChanges();
+           
         }
     }
 }

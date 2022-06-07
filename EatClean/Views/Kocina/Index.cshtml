@@ -113,11 +113,11 @@
                         <div>
                             <div class="uk-card">
                                 <div class="uk-card-media-top uk-inline uk-light">
-                                    <img class="uk-border-rounded-medium" src="@(!string.IsNullOrEmpty(item.Thumbnail) ? item.Thumbnail : "https://via.placeholder.com/300x160")" alt="Course Title">
+                                    <img class="uk-border-rounded-medium" style="width: 300px; height: 168px" src="@(!string.IsNullOrEmpty(item.Thumbnail) ? item.Thumbnail : "https://via.placeholder.com/300x160")" alt="Course Title">
                                     <div class="uk-position-cover uk-card-overlay uk-border-rounded-medium"></div>
                                     <div class="uk-position-xsmall uk-position-top-right">
                                         @*<a href="#" class="uk-icon-button uk-like uk-position-z-index uk-position-relative"
-                                            data-uk-icon="heart"></a>*@
+                                data-uk-icon="heart"></a>*@
                                     </div>
                                 </div>
                                 <div>
@@ -125,10 +125,10 @@
                                     <div class="uk-text-xsmall uk-text-muted" data-uk-grid>
                                         <div class="uk-width-auto uk-flex uk-flex-middle">
                                             @*<span class="uk-rating-filled" data-uk-icon="icon: star; ratio: 0.7"></span>
-                                                <span class="uk-margin-xsmall-left">5.0</span>
-                                                <span>(73)</span>*@
+                                    <span class="uk-margin-xsmall-left">5.0</span>
+                                    <span>(73)</span>*@
                                         </div>
-                                        <div class="uk-width-expand uk-text-right">@(item.AuthorId == 1 ? "by Admin" : item.AuthorId.ToString())</div>
+                                        <div class="uk-width-expand uk-text-right">@(item.AuthorId == "1" ? "by Admin" : item.AuthorId.ToString())</div>
                                     </div>
 
                                 </div>
@@ -136,16 +136,16 @@
                             </div>
                         </div>
                     }
-                    <div style="display: flex; justify-content:center" class="uk-margin-large-top uk-text-small">
-                        <p>
-                            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
-                            of @Model.PageCount
-                        </p>
-                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
-                   {
-                       UlElementClasses = new List<string> { "uk-pagination", "uk-flex-center", "uk-text-500", "uk-margin-remove" }
-                   })
-                    </div>
+                </div>
+                <div style="display: flex; justify-content:center" class="uk-margin-large-top uk-text-small">
+                    <p>
+                        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                        of @Model.PageCount
+                    </p>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
+               {
+                   UlElementClasses = new List<string> { "uk-pagination", "uk-flex-center", "uk-text-500", "uk-margin-remove" }
+               })
                 </div>
             </div>
         </div>

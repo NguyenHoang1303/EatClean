@@ -8,7 +8,7 @@ namespace EatClean.Entity
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int AuthorId { get; set; }
+        public string AuthorId { get; set; }
         public Category Category { get; set; }
         public ArticleDetail ArticleDetail { get; set; }
         [NotMapped]

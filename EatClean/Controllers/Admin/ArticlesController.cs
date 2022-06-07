@@ -61,7 +61,7 @@ namespace EatClean.Controllers.Admin
                 {
                     Title = article.title,
                     Description = article.description,
-                    AuthorId = 1,
+                    AuthorId = "1",
                     ArticleDetail = saveAdt,
                     Status = 1,
                     Category = categoty,

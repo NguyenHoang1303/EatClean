@@ -452,9 +452,9 @@
     <Compile Include="Migrations\202206050958003_updateAr.designer.cs">
       <DependentUpon>202206050958003_updateAr.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202206070810367_getDb.cs" />
-    <Compile Include="Migrations\202206070810367_getDb.designer.cs">
-      <DependentUpon>202206070810367_getDb.cs</DependentUpon>
+    <Compile Include="Migrations\202206070841373_seeDb.cs" />
+    <Compile Include="Migrations\202206070841373_seeDb.designer.cs">
+      <DependentUpon>202206070841373_seeDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2384,8 +2384,8 @@
     <EmbeddedResource Include="Migrations\202206050958003_updateAr.resx">
       <DependentUpon>202206050958003_updateAr.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202206070810367_getDb.resx">
-      <DependentUpon>202206070810367_getDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202206070841373_seeDb.resx">
+      <DependentUpon>202206070841373_seeDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
