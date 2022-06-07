@@ -480,6 +480,10 @@
     <Compile Include="Migrations\202206071225497_addBook.designer.cs">
       <DependentUpon>202206071225497_addBook.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206071254433_change.cs" />
+    <Compile Include="Migrations\202206071254433_change.designer.cs">
+      <DependentUpon>202206071254433_change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\ArticleRequest.cs" />
@@ -2431,6 +2435,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206071225497_addBook.resx">
       <DependentUpon>202206071225497_addBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206071254433_change.resx">
+      <DependentUpon>202206071254433_change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
