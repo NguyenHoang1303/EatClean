@@ -386,17 +386,6 @@
     <Compile Include="Migrations\202206070516261_createAcc.designer.cs">
       <DependentUpon>202206070516261_createAcc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202206070531251_createAccss.cs" />
-    <Compile Include="Migrations\202206070531251_createAccss.designer.cs">
-      <DependentUpon>202206070531251_createAccss.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202206070603278_createAccssâ.cs" />
-    <Compile Include="Migrations\202206070603278_createAccssâ.designer.cs">
-      <DependentUpon>202206070603278_createAccssâ.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202206070756207_createA.cs" />
-    <Compile Include="Migrations\202206070756207_createA.designer.cs">
-      <DependentUpon>202206070756207_createA.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202206071136261_hello.cs" />
     <Compile Include="Migrations\202206071136261_hello.designer.cs">
