@@ -1,7 +1,7 @@
 ﻿
 let arr = [];
 $("#btnCreateAticle").on("click", function () {
-    var userId = $("input[name=userId]");
+    var userId = $("input[name=userId]").val();
     var imgArray = [];
     var stepArray = [];
     var ingredientArray = [];
@@ -33,8 +33,8 @@ $("#btnCreateAticle").on("click", function () {
     }
     $.ajax({
         type: "POST",
-        url: "/Kocina/Create/" + userId,
-        data:data,
+        url: "/Kocina/CreateArticle/" + userId,
+        data: data,
         success: function (data) {
             if (data == "True") {
                 swal("Good job!", "You clicked the button!", "success");
@@ -85,16 +85,18 @@ function createStep(number) {
                                     <textarea name="steps" class="uk-input border border-secondary step-articles" rows="10" cols="50" style="height: 150px"></textarea>
                                 </div>
                             </div>
-                        </div>`
+                        </div>
+            <br/>
+        `
 }
 $("#add-step").on("click", function () {
-    
-        let num = $(".uk-grid-small").length;
-        let html_step = createStep(num + 1);
-        let div = document.createElement("div")
-        div.innerHTML = html_step;
-        $("#uk-article-add").append(div);
-    
+    let num = $(".uk-width-auto").length;
+    console.log(num);
+    let html_step = createStep(num + 1);
+    let div = document.createElement("div")
+    div.innerHTML = html_step;
+    $("#uk-article-add").append(div);
+
 })
 function addIngrendient() {
     var volume = $("input[name=volume]").val();

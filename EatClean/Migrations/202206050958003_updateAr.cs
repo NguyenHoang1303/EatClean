@@ -1,8 +1,7 @@
 ﻿namespace EatClean.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class updateAr : DbMigration
     {
         public override void Up()
@@ -16,7 +15,7 @@
             DropColumn("dbo.ArticleDetails", "DeletedAt");
             DropColumn("dbo.Articles", "Tags");
         }
-        
+
         public override void Down()
         {
             AddColumn("dbo.Articles", "Tags", c => c.String());

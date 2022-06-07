@@ -416,6 +416,7 @@
     <Compile Include="Entity\Account.cs" />
     <Compile Include="Entity\Article.cs" />
     <Compile Include="Entity\ArticleDetail.cs" />
+    <Compile Include="Entity\Book.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\LoginViewModel.cs" />
     <Compile Include="Entity\Role.cs" />
@@ -451,6 +452,30 @@
     <Compile Include="Migrations\202206050958003_updateAr.cs" />
     <Compile Include="Migrations\202206050958003_updateAr.designer.cs">
       <DependentUpon>202206050958003_updateAr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206070516261_createAcc.cs" />
+    <Compile Include="Migrations\202206070516261_createAcc.designer.cs">
+      <DependentUpon>202206070516261_createAcc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206070531251_createAccss.cs" />
+    <Compile Include="Migrations\202206070531251_createAccss.designer.cs">
+      <DependentUpon>202206070531251_createAccss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206070603278_createAccssâ.cs" />
+    <Compile Include="Migrations\202206070603278_createAccssâ.designer.cs">
+      <DependentUpon>202206070603278_createAccssâ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206070756207_createA.cs" />
+    <Compile Include="Migrations\202206070756207_createA.designer.cs">
+      <DependentUpon>202206070756207_createA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206071136261_hello.cs" />
+    <Compile Include="Migrations\202206071136261_hello.designer.cs">
+      <DependentUpon>202206071136261_hello.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206071225497_addBook.cs" />
+    <Compile Include="Migrations\202206071225497_addBook.designer.cs">
+      <DependentUpon>202206071225497_addBook.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -591,6 +616,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="js\Admin\Article\index.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -2220,6 +2246,7 @@
     <Content Include="Views\Kocina\ArticleDetail.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Admin\Articles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Kocina\Recipe.cshtml" />
@@ -2377,6 +2404,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206050958003_updateAr.resx">
       <DependentUpon>202206050958003_updateAr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206070516261_createAcc.resx">
+      <DependentUpon>202206070516261_createAcc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206070531251_createAccss.resx">
+      <DependentUpon>202206070531251_createAccss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206070603278_createAccssâ.resx">
+      <DependentUpon>202206070603278_createAccssâ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206070756207_createA.resx">
+      <DependentUpon>202206070756207_createA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206071136261_hello.resx">
+      <DependentUpon>202206071136261_hello.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206071225497_addBook.resx">
+      <DependentUpon>202206071225497_addBook.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
