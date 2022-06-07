@@ -1,4 +1,5 @@
-﻿@{
+﻿@model EatClean.Entity.Tag
+@{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -20,18 +21,19 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">General Information</h4>
+                <h4 class="card-title">Update Tag</h4>
                 <p class="card-description">
                     Necessary information
                 </p>
                 <form class="forms-sample">
+                    <input type="hidden" name="tagId" value="@Model.Id" /> 
                     <div class="form-group">
                         <label for="exampleInputUsername1">Tag Name</label>
-                        <input name="tag" type="text" class="form-control border border-secondary" id="exampleInputUsername1">
+                        <input name="tagName" type="text" class="form-control border border-secondary" id="exampleInputUsername1" value="@Model.Name">
                     </div>
                 </form>
                 <div class="flex-column text-left">
-                    <input class="btn btn-primary uk-padding-small" onclick="createTag()" type="button" value="Create">
+                    <input class="btn btn-primary uk-padding-small" type="button" onclick="updateTag()" value="Update">
                 </div>
             </div>
         </div>

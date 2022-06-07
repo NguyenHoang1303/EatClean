@@ -82,5 +82,4 @@ function deleteCategory() {
             document.getElementById('id01').style.display = 'none';
         }
     });
-
 }

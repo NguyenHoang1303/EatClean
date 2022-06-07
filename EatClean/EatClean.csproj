@@ -453,6 +453,9 @@
     <Compile Include="Migrations\202206050958003_updateAr.designer.cs">
       <DependentUpon>202206050958003_updateAr.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206070841373_seeDb.cs" />
+    <Compile Include="Migrations\202206070841373_seeDb.designer.cs">
+      <DependentUpon>202206070841373_seeDb.cs</DependentUpon>
     <Compile Include="Migrations\202206070516261_createAcc.cs" />
     <Compile Include="Migrations\202206070516261_createAcc.designer.cs">
       <DependentUpon>202206070516261_createAcc.cs</DependentUpon>
@@ -2250,7 +2253,10 @@
     <Content Include="Views\Kocina\ArticleDetail.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Admin\Tag\Index.cshtml" />
+    <Content Include="Views\Admin\Tag\Edit.cshtml" />
     <Content Include="Views\Admin\Articles\Index.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Kocina\Recipe.cshtml" />
@@ -2409,6 +2415,9 @@
     <EmbeddedResource Include="Migrations\202206050958003_updateAr.resx">
       <DependentUpon>202206050958003_updateAr.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206070841373_seeDb.resx">
+      <DependentUpon>202206070841373_seeDb.cs</DependentUpon>
+
     <EmbeddedResource Include="Migrations\202206070516261_createAcc.resx">
       <DependentUpon>202206070516261_createAcc.cs</DependentUpon>
     </EmbeddedResource>

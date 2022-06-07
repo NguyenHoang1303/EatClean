@@ -10,6 +10,7 @@ namespace EatClean.App_Start
     {
         public void Configuration(IAppBuilder app)
         {
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
