@@ -383,7 +383,6 @@
     <Compile Include="Migrations\202206070516261_createAcc.designer.cs">
       <DependentUpon>202206070516261_createAcc.cs</DependentUpon>
     </Compile>
-    </Compile>
     <Compile Include="Migrations\202206071136261_hello.cs" />
     <Compile Include="Migrations\202206071136261_hello.designer.cs">
       <DependentUpon>202206071136261_hello.cs</DependentUpon>
