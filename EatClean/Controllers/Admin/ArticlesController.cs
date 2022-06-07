@@ -26,7 +26,7 @@ namespace EatClean.Controllers.Admin
         {
             ViewBag.Tags = _db.Tags.ToList();
             ViewBag.Categories = _db.Categories.ToList();
-            return View();
+            return View("~/Views/Admin/Articles/Create.cshtml");
         }
 
         [HttpPost]
