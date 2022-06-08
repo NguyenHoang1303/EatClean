@@ -489,9 +489,15 @@
     <Compile Include="Migrations\202206071249074_update_table.Designer.cs">
       <DependentUpon>202206071249074_update_table.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
+    <Compile Include="Migrations\202206071334500_update_table_2.cs" />
+    <Compile Include="Migrations\202206071334500_update_table_2.designer.cs">
+      <DependentUpon>202206071334500_update_table_2.cs</DependentUpon>
+=======
     <Compile Include="Migrations\202206071254433_change.cs" />
     <Compile Include="Migrations\202206071254433_change.designer.cs">
       <DependentUpon>202206071254433_change.cs</DependentUpon>
+>>>>>>> cdb4966d2cb4d5a01fd44973f31bc12a59e744e2
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2452,8 +2458,13 @@
     <EmbeddedResource Include="Migrations\202206071249074_update_table.resx">
       <DependentUpon>202206071249074_update_table.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
+    <EmbeddedResource Include="Migrations\202206071334500_update_table_2.resx">
+      <DependentUpon>202206071334500_update_table_2.cs</DependentUpon>
+=======
     <EmbeddedResource Include="Migrations\202206071254433_change.resx">
       <DependentUpon>202206071254433_change.cs</DependentUpon>
+>>>>>>> cdb4966d2cb4d5a01fd44973f31bc12a59e744e2
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
