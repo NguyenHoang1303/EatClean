@@ -469,13 +469,25 @@
     <Compile Include="Migrations\202206070756207_createA.designer.cs">
       <DependentUpon>202206070756207_createA.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206071111272_create_book_table.cs" />
+    <Compile Include="Migrations\202206071111272_create_book_table.Designer.cs">
+      <DependentUpon>202206071111272_create_book_table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202206071136261_hello.cs" />
     <Compile Include="Migrations\202206071136261_hello.designer.cs">
       <DependentUpon>202206071136261_hello.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206071139039_create_book_table_2.cs" />
+    <Compile Include="Migrations\202206071139039_create_book_table_2.Designer.cs">
+      <DependentUpon>202206071139039_create_book_table_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202206071225497_addBook.cs" />
     <Compile Include="Migrations\202206071225497_addBook.designer.cs">
       <DependentUpon>202206071225497_addBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206071249074_update_table.cs" />
+    <Compile Include="Migrations\202206071249074_update_table.Designer.cs">
+      <DependentUpon>202206071249074_update_table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202206071254433_change.cs" />
     <Compile Include="Migrations\202206071254433_change.designer.cs">
@@ -2424,11 +2436,20 @@
     <EmbeddedResource Include="Migrations\202206070756207_createA.resx">
       <DependentUpon>202206070756207_createA.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206071111272_create_book_table.resx">
+      <DependentUpon>202206071111272_create_book_table.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206071136261_hello.resx">
       <DependentUpon>202206071136261_hello.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206071139039_create_book_table_2.resx">
+      <DependentUpon>202206071139039_create_book_table_2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206071225497_addBook.resx">
       <DependentUpon>202206071225497_addBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206071249074_update_table.resx">
+      <DependentUpon>202206071249074_update_table.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206071254433_change.resx">
       <DependentUpon>202206071254433_change.cs</DependentUpon>
