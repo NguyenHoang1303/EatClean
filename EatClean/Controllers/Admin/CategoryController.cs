@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace EatClean.Controllers.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
         private DataContext dataContext;

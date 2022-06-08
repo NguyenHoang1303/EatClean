@@ -2266,6 +2266,7 @@
     <Content Include="Views\Admin\Tag\Index.cshtml" />
     <Content Include="Views\Admin\Tag\Edit.cshtml" />
     <Content Include="Views\Admin\Articles\Index.cshtml" />
+    <Content Include="Views\Admin\Book\Book.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Kocina\Recipe.cshtml" />
