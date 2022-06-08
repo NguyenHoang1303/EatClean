@@ -17,6 +17,7 @@ namespace EatClean.App_Start
                 //LoginPath = new PathString("/User/Login"),
                 LoginPath = new PathString("/Kocina/Login"),
             });
+            
         }
     }
 }

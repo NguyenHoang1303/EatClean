@@ -60,6 +60,7 @@ namespace EatClean.Controllers.User
                 ViewBag.authorName = "Admin";
                 ViewBag.totalAricleByAuthor = query.Where(s => string.Equals(s.AuthorId, "1")).Count();
             }
+            
             string contents = article.ArticleDetail.Content;
             dynamic a;
             try
@@ -223,7 +224,7 @@ namespace EatClean.Controllers.User
                 {
                     return Redirect("/Articles/Create");
                 }
-                else return Redirect("/Kocina");
+                return Redirect("/Kocina");
             }
         }
 
@@ -232,7 +233,7 @@ namespace EatClean.Controllers.User
             HttpContext.GetOwinContext().Authentication.SignOut();
             return Redirect("/Kocina");
         }
-
+        [Authorize(Roles = "User")]
         public ActionResult CreateArticle()
         {
             ViewBag.Tags = myIdentityDbContext.Tags.ToList();
@@ -243,9 +244,10 @@ namespace EatClean.Controllers.User
                 ViewBag.UserId = user.Id;
                 return View(user);
             }
-            else return View("~/View/Konaci/CreateArticle.cshtml");
+            else return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "User")]
         [HttpPost]
         public bool CreateArticle(ArticleRequest article, string id)
         {

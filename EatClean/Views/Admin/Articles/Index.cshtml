@@ -48,9 +48,9 @@
                                 <tr>
                                     <td>@item.Id</td>
                                     <td>
-                                        <img src="@item.Thumbnail" style="width: 100%; border-radius: 0" />
+                                        <img src="@item.Thumbnail" style="height: 100px; width:100%; border-radius: 0" />
                                     </td>
-                                    <td>@item.Title</td>
+                                    <td style=" width: 300px">@item.Title</td>
                                     <td>@(string.Equals(item.AuthorId,"1") ? "Admin" : "User")</td>
                                     <td>
                                         <select class="status-article" data-articleId="@item.Id">
@@ -69,6 +69,14 @@
                             }
                         </tbody>
                     </table>
+                    <p>
+                        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                        of @Model.PageCount
+                    </p>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
+                       {
+                           UlElementClasses = new List<string> { "uk-pagination", "uk-flex-center", "uk-text-500", "uk-margin-remove" }
+                       })
                 </div>
             </div>
         </div>
