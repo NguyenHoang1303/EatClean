@@ -493,10 +493,6 @@
     <Compile Include="Migrations\202206071254433_change.designer.cs">
       <DependentUpon>202206071254433_change.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202206081616179_check_table.cs" />
-    <Compile Include="Migrations\202206081616179_check_table.designer.cs">
-      <DependentUpon>202206081616179_check_table.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\ArticleRequest.cs" />
@@ -2459,9 +2455,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206071254433_change.resx">
       <DependentUpon>202206071254433_change.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202206081616179_check_table.resx">
-      <DependentUpon>202206081616179_check_table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
