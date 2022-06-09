@@ -1,5 +1,6 @@
 ﻿using EatClean.Data;
 using EatClean.Entity;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
@@ -18,12 +19,16 @@ namespace EatClean.Controllers.Admin
 
         }
         // GET: Category
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-
-            List<Category> categories = dataContext.Categories.Where(c => c.Status != -1).ToList();
+            if (page == null) page = 1;
+            int pageSize = 9;
+            int pageIndex = (page ?? 1);
+            var categories = dataContext.Categories.AsQueryable();
+            PagedList.IPagedList<Category> pagedCategory = categories.ToList().ToPagedList(pageIndex, pageSize);
+            
             ViewBag.categories = categories;
-            return View("~/Views/Admin/Category/Index.cshtml");
+            return View("~/Views/Admin/Category/Index.cshtml", pagedCategory);
         }
 
         // GET: Category/Create
