@@ -103,19 +103,20 @@
                                     <div class="uk-position-cover uk-card-overlay uk-border-rounded-medium"></div>
                                     <div class="uk-position-xsmall uk-position-top-right">
                                         @*<a href="#" class="uk-icon-button uk-like uk-position-z-index uk-position-relative"
-                                        data-uk-icon="heart"></a>*@
+                                            data-uk-icon="heart"></a>*@
                                     </div>
                                 </div>
                                 <div>
                                     <h3 class="uk-card-title uk-text-500 uk-margin-small-bottom uk-margin-top">@(!string.IsNullOrEmpty(item.Title) ? item.Title : "No Title")</h3>
                                     <div class="uk-text-xsmall uk-text-muted" data-uk-grid>
-                                        <div class="uk-width-auto uk-flex uk-flex-middle">
-                                            @*<span class="uk-rating-filled" data-uk-icon="icon: star; ratio: 0.7"></span>
-
-                                            <span class="uk-margin-xsmall-left">5.0</span>
-                                            <span>(73)</span>*@
-                                        </div>
-                                        <div class="uk-width-expand uk-text-right">@(string.Equals(item.AuthorId,"1") ? "by Admin" : item.AuthorId.ToString())</div>
+                                        @if (item.Account != null)
+                                        {
+                                            <div class="uk-width-expand uk-text-right">@item.Account.UserName</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="uk-width-expand uk-text-right">Admin</div>
+                                        }
 
                                     </div>
 
@@ -139,5 +140,5 @@
                })
         </div>
     </div>
-   
+
     <br />

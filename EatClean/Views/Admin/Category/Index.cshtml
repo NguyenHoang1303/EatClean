@@ -1,4 +1,5 @@
-﻿
+﻿@model PagedList.IPagedList<EatClean.Entity.Category>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -43,18 +44,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var cate in categories)
+                            @foreach (var cate in Model)
                             {
 
                                 <tr>
                                     <td>@cate.Id</td>
-                                    <td>@(cate.ParentId == 0 ? "Không có" : cate.ParentId )</td>
+                                    <td>@(cate.ParentId == 0 ? "Không có" : cate.ParentId.ToString() )</td>
                                     <td>@cate.Name</td>
                                     <td>@cate.Description</td>
                                     <td>@(cate.Status == 0 ? "No Actice" : cate.Status == 1 ? "Actice" : "Delete" )</td>
-                                    <td>@(new DateTime(cate.CreatedAt))</td>
-                                    <td>@(new DateTime(cate.UpdatedAt))</td>
-                                    <td>
+                                    <td style="width: 10%; text-align: center">@(new DateTime((long)cate.CreatedAt))</td>
+                                    <td style="width: 10%; text-align: center">@(new DateTime((long) cate.UpdatedAt))</td>
+                                    <td style="width:150px">
                                         <span class=" badge badge-danger p-2" onclick="openModal(@cate.Id)" style="cursor: pointer">Xóa</span>
                                         <span class="badge badge-info p-2" style="cursor: pointer"><a href="~/Category/Edit/@cate.Id">Sửa</a></span>
                                     </td>
@@ -62,7 +63,15 @@
                             }
                         </tbody>
                     </table>
-                </div>  
+                    <p>
+                        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                        of @Model.PageCount
+                    </p>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
+                       {
+                           UlElementClasses = new List<string> { "uk-pagination", "uk-flex-center", "uk-text-500", "uk-margin-remove" }
+                       })
+                </div>
             </div>
         </div>
     </div>
