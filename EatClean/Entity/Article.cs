@@ -7,6 +7,7 @@ namespace EatClean.Entity
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string AuthorId { get; set; }
+        public Account Account { get; set; }
         public Category Category { get; set; }
         public ArticleDetail ArticleDetail { get; set; }
         public Tag Tags { get; set; }

@@ -28,7 +28,46 @@
                 <p class="card-description">
                     Danh sách category
                 </p>
-                <div class="table-responsive pt-3">
+
+                <form class="forms-sample" action="/" method="post">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Keyword</label>
+                                    <input name="keyword" type="text" class="form-control border border-secondary" id="keyword">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Status</label>
+                                    <select class="form-control border-secondary" style="padding: 13px">
+                                        <option value="0">Wait</option>
+                                        <option value="1">Active</option>
+                                        <option value="-1">Delete</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="fromDate">StartDate:</label>
+                                    <input class="form-control border border-secondary" type="date" id="fromDate" name="fromDate">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="toDate">EndDate:</label>
+                                    <input class="form-control border border-secondary" type="date" id="toDate" name="toDate">
+                                </div>
+                            </div>
+                            <div class="col-1 ct-end">
+                                <button class="btn btn-inverse-secondary">submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+             S   <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                         <thead>
                             <tr>

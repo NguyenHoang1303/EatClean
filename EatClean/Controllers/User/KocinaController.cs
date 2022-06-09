@@ -40,7 +40,7 @@ namespace EatClean.Controllers.User
             if (page == null) page = 1;
             int pageSize = 9;
             int pageIndex = (page ?? 1);
-            var articles = myIdentityDbContext.Articles.Where(a => a.Status == 1);
+            var articles = myIdentityDbContext.Articles.AsQueryable().Where(a => a.Status == 1).Include(a=> a.Account);
             PagedList.IPagedList<Article> pagedProduct = articles.OrderByDescending(a => a.CreatedAt).ToList().ToPagedList(pageIndex, pageSize);
             ViewBag.categories = myIdentityDbContext.Categories.ToList();
             return View(pagedProduct);
@@ -251,7 +251,8 @@ namespace EatClean.Controllers.User
         [HttpPost]
         public bool CreateArticle(ArticleRequest article, string id)
         {
-            if (id == null || myIdentityDbContext.Users.Find(id) == null)
+            var acc = myIdentityDbContext.Users.Find(id);
+            if (id == null || acc == null)
             {
                 return false;
             }
@@ -284,7 +285,7 @@ namespace EatClean.Controllers.User
                 {
                     Title = article.title,
                     Description = article.description,
-                    AuthorId = id,
+                    Account = acc,
                     ArticleDetail = saveAdt,
                     Status = 0,
                     Category = categoty,
