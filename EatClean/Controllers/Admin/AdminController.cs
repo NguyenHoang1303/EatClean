@@ -32,10 +32,41 @@ namespace EatClean.Entity
         {
             return View("~/Views/Admin/Book/Book.cshtml");
         }
+        public ActionResult IndexBook()
+        {
+            return View("");
+        }
         [HttpPost]
         public String StoreBook(string name, double price,string authorName,int status,string thumbnail)
         {
-            return name + price + authorName + status + thumbnail;
+          Book book = new Book()
+            {
+                Name = name,
+                Price = price,
+                AuthorName= authorName,
+               Status = status,
+               Thumbnail = thumbnail,
+          };
+            try
+            {
+                if (!string.IsNullOrEmpty(book.Name)&&
+                    !string.IsNullOrEmpty(book.AuthorName) &&
+                    !string.IsNullOrEmpty(book.Thumbnail) &&
+                   book.Price != null &&
+                         book.Status != null
+                    )
+                {
+                    _db.Books.Add(book);
+                    _db.SaveChanges();
+                    return "True";
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+            return "False";
         }
         [HttpPost]
         public String CreateTag(string tag_name)
