@@ -35,12 +35,22 @@ namespace EatClean.Controllers.User
         }
 
         // GET: Kocina
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, int? categoryId, int? tagId)
         {
             if (page == null) page = 1;
             int pageSize = 9;
             int pageIndex = (page ?? 1);
-            var articles = myIdentityDbContext.Articles.AsQueryable().Where(a => a.Status == 1).Include(a=> a.Account);
+            var articles = myIdentityDbContext.Articles.AsQueryable().Where(a => a.Status == 1).Include(a => a.Account);
+            if (categoryId != null)
+            {
+                articles = articles.Where(a => a.Category.Id == categoryId);
+            }
+
+            if (tagId != null)
+            {
+                articles = articles.Where(a => a.Tags.Id == tagId);
+            }
+
             PagedList.IPagedList<Article> pagedProduct = articles.OrderByDescending(a => a.CreatedAt).ToList().ToPagedList(pageIndex, pageSize);
             ViewBag.categories = myIdentityDbContext.Categories.ToList();
             return View(pagedProduct);

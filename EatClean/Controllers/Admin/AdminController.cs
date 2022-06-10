@@ -136,5 +136,11 @@ namespace EatClean.Entity
                 return true;
             }
         }
+
+        public ActionResult Logout()
+        {
+            HttpContext.GetOwinContext().Authentication.SignOut();
+            return Redirect("/Kocina/Login");
+        }
     }
 }
