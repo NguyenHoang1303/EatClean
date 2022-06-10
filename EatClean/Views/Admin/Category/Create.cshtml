@@ -55,7 +55,10 @@
                                     }
                                     else
                                     {
-                                        <option value="@cate.Id">@cate.Name</option>
+                                        if (cate.ParentId == 0)
+                                        {
+                                            <option value="@cate.Id">@cate.Name</option>
+                                        }
                                     }
                                 }
                             }

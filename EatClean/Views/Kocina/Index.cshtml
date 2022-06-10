@@ -72,7 +72,7 @@
                         {
                             if (cate.ParentId == 0)
                             {
-                                <li class="uk-parent uk-open">
+                                <li class="uk-parent">
                                     <a href="#">@cate.Name</a>
                                     <ul class="uk-nav-sub">
                                         @foreach (var sub in map)
@@ -81,7 +81,7 @@
                                             {
                                                 foreach (var value in sub.Value)
                                                 {
-                                                    <li><a href="~/Kocina/Index?categoryId=@cate.Id">@value.Name</a></li>
+                                                    <li><a href="~/Kocina/Index?categoryId=@value.Id">@value.Name</a></li>
                                                 }
                                             }
                                         }
@@ -90,6 +90,7 @@
                             }
                         }
                     </ul>
+                    <a href="/" style="margin-top: 10px; float: right; background-color: #eb4a36" class="btn btn-primary">Reset</a>
                 </div>
             </div>
             <div class="uk-width-expand@m">
@@ -125,11 +126,10 @@
                             </div>
                         </div>
                     }
-
                 </div>
             </div>
         </div>
-        <div style="display: flex; justify-content:center" class="uk-margin-large-top uk-text-small">
+        <div style="display: flex; justify-content: center;" class="uk-margin-large-top uk-text-small">
             <p>
                 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
                 of @Model.PageCount

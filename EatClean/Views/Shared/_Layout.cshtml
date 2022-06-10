@@ -25,6 +25,10 @@
                         <li><a href="/Kocina/Articles">Articles</a></li>
                         <li><a href="#">About Us</a></li>
                         <li><a href="/Kocina/Contact">Contact Us</a></li>
+                        @if (User.IsInRole("User"))
+                        {
+                            <li><a href="~/Kocina/CreateArticle">Create Article</a></li>
+                        }
                     </ul>
                 </div>
                 <div class="uk-navbar-right">
